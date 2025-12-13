@@ -1344,7 +1344,7 @@ h2 {
     padding: 20px;
     border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.16);
-    backdrop-filter: blur(18px) saturate(160%);
+    backdrop-filter: blur(6px) saturate(160%);
     box-shadow: 0 14px 40px rgba(8,10,20,0.18);
 }
 
@@ -1403,7 +1403,7 @@ h2 {
 .join-by-code-section {
     background: linear-gradient(180deg, rgba(255,255,255,0.20), rgba(255,255,255,0.10));
     border: 1px solid rgba(255,255,255,0.16);
-    backdrop-filter: blur(18px) saturate(160%);
+    backdrop-filter: blur(6px) saturate(160%);
     padding: 25px;
     border-radius: 15px;
     margin-top: 0;
@@ -1427,7 +1427,7 @@ h2 {
     margin-bottom: 20px;
     border: 1px solid rgba(255,255,255,0.16);
     box-shadow: 0 12px 34px rgba(0,0,0,0.10);
-    backdrop-filter: blur(18px) saturate(160%);
+    backdrop-filter: blur(6px) saturate(160%);
 }
 
 .room-info h2 {
@@ -2932,7 +2932,7 @@ body.game-live .card:not(.revealed) {
 .game-over-content {
     background: rgba(255, 255, 255, 0.82);
     border: 1px solid rgba(255, 255, 255, 0.22);
-    backdrop-filter: blur(18px) saturate(160%);
+    backdrop-filter: blur(6px) saturate(160%);
     padding: 50px;
     border-radius: 20px;
     text-align: center;
