@@ -16,6 +16,10 @@
                 <label for="username">Kullanıcı Adınız</label>
                 <input type="text" id="username" placeholder="Bir kullanıcı adı girin" maxlength="15">
             </div>
+            <div class="input-group">
+                <label for="background-color">🎨 Arka Plan Rengi</label>
+                <input type="color" id="background-color">
+            </div>
             <button class="btn btn-primary" onclick="login()">Oyuna Gir</button>
         </div>
     </div>
@@ -78,6 +82,10 @@
                         </select>
                     </div>
                     <div class="input-group">
+                        <label for="fast-draft">⚡ Fast Draft (Seçilirse kartlar direkt dağıtılır, seçilmezse draft yapılır)</label>
+                        <input type="checkbox" id="fast-draft" checked>
+                    </div>
+                    <div class="input-group">
                         <label>
                             <input type="checkbox" id="tournament-mode">
                             🏆 Tournament Modu (Power Cards Kapalı)
@@ -120,6 +128,11 @@
                         <button id="audio-toggle" class="icon-btn" onclick="toggleAudio()" title="Müziği aç/kapat">🔊</button>
                         <input id="audio-volume" type="range" min="0" max="1" step="0.05" value="0.6" onchange="setAudioVolume(this.value)" title="Ses seviyesi">
                     </div>
+                    <div class="background-controls">
+                        <label for="game-background-color" title="Arka plan rengi">🎨</label>
+                        <input type="color" id="game-background-color" title="Arka plan rengini değiştir">
+                        <button id="reset-background" class="icon-btn" onclick="resetBackground()" title="Varsayılan gökkuşağı arka planına dön">🌈</button>
+                    </div>
 
                     <!-- Reactions + horn moved to top bar -->
                     <div id="reaction-bar" class="reaction-bar">
@@ -139,6 +152,10 @@
                     <button id="dark-mode-toggle" class="dark-mode-toggle" onclick="toggleDarkMode()" title="Dark Mode Toggle">
                         <span class="sun-icon">☀️</span>
                         <span class="moon-icon">🌙</span>
+                    </button>
+                    <button id="power-save-toggle" class="power-save-toggle" onclick="togglePowerSaveMode()" title="Power Save Mode Toggle">
+                        <span class="power-icon">⚡</span>
+                        <span class="save-icon">💤</span>
                     </button>
                     <button class="btn btn-small btn-danger" onclick="leaveRoom()">Odadan Ayrıl</button>
                 </div>
@@ -221,7 +238,6 @@
                     <div class="start-game-controls">
                             <button id="bot-management-btn" class="btn btn-secondary btn-medium" onclick="toggleBotManagement()">🤖 Botları Yönet</button>
                             <button id="random-teams-btn" class="btn btn-secondary btn-medium" onclick="randomizeTeams()">🎲 Takımları Karıştır</button>
-                            <button id="toggle-power-cards-btn" class="btn btn-secondary btn-medium hidden" onclick="togglePowerCards()">🃏 Power Cards: AÇIK</button>
                             <label id="draft-picks-setting" class="draft-picks-setting hidden" title="Her takım kaç power card alacak?">
                                 🧩 Draft / Takım:
                                 <select id="draft-picks-per-team">
@@ -321,6 +337,23 @@
                     <p id="guesses-info"></p>
                 </div>
 
+                <!-- Power Cards Button Above Chat -->
+                <div id="power-cards-above-chat" class="power-cards-above-chat hidden">
+                    <button id="toggle-power-cards-btn" class="btn btn-secondary btn-medium hidden" onclick="togglePowerCardMenu()">⚡ Güç Kartları</button>
+                    <div id="power-card-menu" class="power-card-menu hidden">
+                        <div class="power-card-header">
+                            <h3>⚡ Güç Kartlarım</h3>
+                            <button class="close-btn" onclick="closePowerCardMenu()">✕</button>
+                        </div>
+                        <div id="power-card-list" class="power-card-list">
+                            <!-- Power cards will be populated here -->
+                        </div>
+                        <div class="power-card-info" id="power-card-info" style="display: none;">
+                            <p id="power-card-description"></p>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Chat -->
                 <div id="game-chat-section" class="game-chat-section">
                     <div class="chat-header">
@@ -360,23 +393,6 @@
                         <span onclick="insertEmoji('🤔')">🤔</span>
                         <span onclick="insertEmoji('😢')">😢</span>
                         <span onclick="insertEmoji('👏')">👏</span>
-                    </div>
-                </div>
-
-                <!-- Power Card System (chat altı, sağa hizalı) -->
-                <div id="power-cards-section" class="power-cards-section hidden">
-                    <button class="power-cards-toggle btn btn-secondary" onclick="togglePowerCardMenu()">⚡ Güç Kartları</button>
-                    <div id="power-card-menu" class="power-card-menu hidden">
-                        <div class="power-card-header">
-                            <h3>⚡ Güç Kartlarım</h3>
-                            <button class="close-btn" onclick="closePowerCardMenu()">✕</button>
-                        </div>
-                        <div id="power-card-list" class="power-card-list">
-                            <!-- Power cards will be populated here -->
-                        </div>
-                        <div class="power-card-info" id="power-card-info" style="display: none;">
-                            <p id="power-card-description"></p>
-                        </div>
                     </div>
                 </div>
 

@@ -1273,7 +1273,7 @@ io.on('connection', (socket) => {
             io.emit('rooms-list', rooms);
         }
 
-        const { name, maxPlayers, wordCategory, powerCardsEnabled, draftPicksPerTeam } = data;
+        const { name, maxPlayers, wordCategory, powerCardsEnabled, draftPicksPerTeam, fastDraft } = data;
         const roomId = generateRoomId();
         const inviteCode = generateInviteCode();
         const picksPerTeam = Math.max(1, Math.min(8, Number.isFinite(Number(draftPicksPerTeam)) ? Math.floor(Number(draftPicksPerTeam)) : 4));
@@ -1287,7 +1287,8 @@ io.on('connection', (socket) => {
             inviteCode: inviteCode,
             wordCategory: wordCategory || 'genel',
             powerCardsEnabled: (typeof powerCardsEnabled === 'boolean') ? powerCardsEnabled : true,
-            draftPicksPerTeam: picksPerTeam
+            draftPicksPerTeam: picksPerTeam,
+            fastDraft: (typeof fastDraft === 'boolean') ? fastDraft : true
         };
         rooms.push(room);
         player.roomId = roomId;
@@ -1614,25 +1615,33 @@ io.on('connection', (socket) => {
 
                 // New competitive draft: after game starts, open vote+dice draft for 8 random power cards
                 if (room.powerCardsEnabled !== false) {
-                    if (room.gameState && room.gameState.currentTurn) {
-                        room.gameState.currentTurn.phase = 'DRAFT';
+                    if (room.fastDraft) {
+                        // Fast draft: skip draft phase, deal cards directly
+                        dealPowerCardsForRoom(room);
+                        emitPowerCardsToConnectedPlayers(room);
+                    } else {
+                        if (room.gameState && room.gameState.currentTurn) {
+                            room.gameState.currentTurn.phase = 'DRAFT';
+                        }
+                        initDraftState(room);
+                        room.teamPowerCards = { RED: [], BLUE: [] };
+                        // Clear any previous hands in UI
+                        room.powerCardsByPlayer = {};
+                        (Array.isArray(room.players) ? room.players : []).forEach(p => {
+                            if (!p || !p.id) return;
+                            if (p.role !== 'OPERATIVE' && p.role !== 'SPYMASTER') return;
+                            room.powerCardsByPlayer[p.id] = [];
+                            const s = io.sockets.sockets.get(p.id);
+                            if (s) io.to(p.id).emit('power-cards', { cards: [] });
+                        });
+                        emitDraft(room);
+                        setTimeout(() => handleBotDraft(room), 700);
                     }
-                    initDraftState(room);
-                    room.teamPowerCards = { RED: [], BLUE: [] };
-                    // Clear any previous hands in UI
-                    room.powerCardsByPlayer = {};
-                    (Array.isArray(room.players) ? room.players : []).forEach(p => {
-                        if (!p || !p.id) return;
-                        if (p.role !== 'OPERATIVE' && p.role !== 'SPYMASTER') return;
-                        room.powerCardsByPlayer[p.id] = [];
-                        const s = io.sockets.sockets.get(p.id);
-                        if (s) io.to(p.id).emit('power-cards', { cards: [] });
-                    });
                 } else {
                     dealPowerCardsForRoom(room);
                 }
                 io.to(player.roomId).emit('game-started', room.gameState);
-                if (room.powerCardsEnabled === false) {
+                if (room.powerCardsEnabled === false || room.fastDraft) {
                     emitPowerCardsToConnectedPlayers(room);
                 } else {
                     emitDraft(room);

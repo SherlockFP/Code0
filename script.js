@@ -1,6 +1,36 @@
 // AGENT0 Game
 const socket = io();
 
+// Apply background color with transparency
+function applyBackgroundColor(color) {
+    if (!color || color === '#rainbow') {
+        // Show default rainbow background
+        document.body.style.removeProperty('background-color');
+        return;
+    }
+    // Convert hex to rgba with 30% opacity for glassmorphism compatibility
+    const rgbaColor = hexToRgba(color, 0.3);
+    document.body.style.setProperty('background-color', rgbaColor, 'important');
+}
+
+// Convert hex color to rgba
+function hexToRgba(hex, alpha) {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+// Reset background to default rainbow
+function resetBackground() {
+    localStorage.removeItem('backgroundColor');
+    document.body.style.removeProperty('background-color');
+    const colorInput = document.getElementById('background-color');
+    if (colorInput) colorInput.value = '#1e3a5f';
+    const gameColorInput = document.getElementById('game-background-color');
+    if (gameColorInput) gameColorInput.value = '#1e3a5f';
+}
+
 function escapeHtml(str) {
     return String(str)
         .replace(/&/g, '&amp;')
@@ -1314,6 +1344,13 @@ document.addEventListener('DOMContentLoaded', () => {
 function login() {
     const usernameInput = document.getElementById('username');
     const username = usernameInput.value.trim();
+    let backgroundColor = document.getElementById('background-color').value;
+    
+    // If no color selected, use rainbow (empty or default)
+    if (!backgroundColor) {
+        backgroundColor = '#rainbow';
+    }
+    
     console.log('Login function called with username:', username);
 
     if (!username) {
@@ -1325,6 +1362,10 @@ function login() {
         alert('Kullanıcı adı 2-15 karakter arasında olmalıdır');
         return;
     }
+
+    // Save background color preference
+    localStorage.setItem('backgroundColor', backgroundColor);
+    applyBackgroundColor(backgroundColor);
 
     console.log('Emitting login event with username:', username);
     // Emit login to server
@@ -1436,6 +1477,7 @@ function createRoom() {
     const tournamentMode = !!document.getElementById('tournament-mode')?.checked;
     const draftPicksCreateRaw = Number(document.getElementById('draft-picks-create')?.value);
     const draftPicksPerTeam = Math.max(1, Math.min(8, Number.isFinite(draftPicksCreateRaw) ? Math.floor(draftPicksCreateRaw) : 4));
+    const fastDraft = !!document.getElementById('fast-draft')?.checked;
 
     if (!roomName) {
         alert('Lütfen oda adı girin');
@@ -1453,7 +1495,8 @@ function createRoom() {
         maxPlayers: parseInt(maxPlayers),
         wordCategory: wordCategory,
         powerCardsEnabled: !tournamentMode,
-        draftPicksPerTeam
+        draftPicksPerTeam,
+        fastDraft
     });
 
     // Server will respond with `room-joined` for the creator.
@@ -1747,6 +1790,21 @@ socket.on('game-started', (data) => {
     if (teamSelectionPhase) teamSelectionPhase.classList.add('hidden');
     if (gamePhase) gamePhase.classList.remove('hidden');
 
+    // Show power cards button above chat if power cards are enabled
+    const powerCardsAboveChat = document.getElementById('power-cards-above-chat');
+    if (powerCardsAboveChat && currentRoom && currentRoom.powerCardsEnabled) {
+        powerCardsAboveChat.classList.remove('hidden');
+    }
+
+    // Move top bar to bottom after game starts
+    const topBar = document.querySelector('.top-bar');
+    if (topBar) {
+        topBar.classList.add('game-started');
+    }
+
+    // Add game-started class to body for padding
+    document.body.classList.add('game-started');
+
     // Render game elements
     renderBoard(currentBoard);
     updateScores(currentBoard);
@@ -1922,14 +1980,12 @@ function updateRoomState(room) {
 
     const isHost = !!(currentPlayer && room && room.host && currentPlayer.id === room.host);
 
-    // Tournament toggle (host only, pre-game)
+    // Power cards button (show if power cards enabled)
     const powerBtn = document.getElementById('toggle-power-cards-btn');
     if (powerBtn) {
-        const enabled = (room && room.powerCardsEnabled !== false);
-        powerBtn.textContent = enabled ? '🃏 Power Cards: AÇIK' : '🏆 Tournament: KAPALI';
-        const show = isHost && !room.gameStarted;
-        powerBtn.classList.toggle('hidden', !show);
-        powerBtn.disabled = !show;
+        const enabled = room && room.powerCardsEnabled !== false;
+        powerBtn.classList.toggle('hidden', !enabled);
+        powerBtn.disabled = !enabled;
     }
 
     // Draft picks per team (host only, pre-game, only relevant when power cards enabled)
@@ -1989,6 +2045,14 @@ function updateRoomState(room) {
 
     updateTeamDisplays(room);
     updateScoreBoardPlayers(room);
+
+    // Show power cards button above chat during game if power cards are enabled
+    const powerCardsAboveChat = document.getElementById('power-cards-above-chat');
+    if (powerCardsAboveChat) {
+        const enabled = (room && room.powerCardsEnabled !== false);
+        const show = room.gameStarted && enabled;
+        powerCardsAboveChat.classList.toggle('hidden', !show);
+    }
 
     // Keep DenemeChat recipient list in sync with current room players
     refreshDenemeChatRecipients(room);
@@ -2122,28 +2186,26 @@ function updateScoreBoardPlayers(room) {
     // Get players list - server sends it as array
     const playersList = Array.isArray(room.players) ? room.players : Object.values(room.players || {});
     
-    // Find spymasters for each team
-    const redSpymaster = playersList.find(p => p.team === 'RED' && p.role === 'SPYMASTER');
-    const blueSpymaster = playersList.find(p => p.team === 'BLUE' && p.role === 'SPYMASTER');
+    // Find spymasters for each team (multiple possible)
+    const redSpymasters = playersList.filter(p => p.team === 'RED' && p.role === 'SPYMASTER');
+    const blueSpymasters = playersList.filter(p => p.team === 'BLUE' && p.role === 'SPYMASTER');
     
     // Update spymaster displays
     const redSpymasterDiv = document.getElementById('red-team-spymaster');
     const blueSpymasterDiv = document.getElementById('blue-team-spymaster');
     
     if (redSpymasterDiv) {
-        const spyName = redSpymaster ? (redSpymaster.username || 'Bot Casusbaşı') : '-';
-        if (redSpymaster) {
-            redSpymasterDiv.innerHTML = `Casusbaşı: <span class="spymaster-name"><span class="player-badge red">${buildPlayerBadgeHtml(redSpymaster)}</span></span>`;
+        if (redSpymasters.length > 0) {
+            redSpymasterDiv.innerHTML = `Casusbaşı: <span class="spymaster-name">${redSpymasters.map(p => `<span class="player-badge red">${buildPlayerBadgeHtml(p)}</span>`).join(', ')}</span>`;
         } else {
-            redSpymasterDiv.innerHTML = `Casusbaşı: <span class="spymaster-name">${spyName}</span>`;
+            redSpymasterDiv.innerHTML = `Casusbaşı: <span class="spymaster-name">-</span>`;
         }
     }
     if (blueSpymasterDiv) {
-        const spyName = blueSpymaster ? (blueSpymaster.username || 'Bot Casusbaşı') : '-';
-        if (blueSpymaster) {
-            blueSpymasterDiv.innerHTML = `Casusbaşı: <span class="spymaster-name"><span class="player-badge blue">${buildPlayerBadgeHtml(blueSpymaster)}</span></span>`;
+        if (blueSpymasters.length > 0) {
+            blueSpymasterDiv.innerHTML = `Casusbaşı: <span class="spymaster-name">${blueSpymasters.map(p => `<span class="player-badge blue">${buildPlayerBadgeHtml(p)}</span>`).join(', ')}</span>`;
         } else {
-            blueSpymasterDiv.innerHTML = `Casusbaşı: <span class="spymaster-name">${spyName}</span>`;
+            blueSpymasterDiv.innerHTML = `Casusbaşı: <span class="spymaster-name">-</span>`;
         }
     }
     
@@ -2258,12 +2320,12 @@ function setupBoardInteractions() {
         lastHoverKey = key;
         lastHoverAt = now;
 
-        // Visual ripple
-        card.classList.remove('hover-ripple');
-        // Force reflow so animation can restart
-        void card.offsetWidth;
-        card.classList.add('hover-ripple');
-        setTimeout(() => card.classList.remove('hover-ripple'), 650);
+        // Visual ripple disabled
+        // card.classList.remove('hover-ripple');
+        // // Force reflow so animation can restart
+        // void card.offsetWidth;
+        // card.classList.add('hover-ripple');
+        // setTimeout(() => card.classList.remove('hover-ripple'), 650);
 
         // Sound
         if (soundManager && soundManager.enabled) {
@@ -2559,11 +2621,34 @@ function endTurn() {
 function togglePowerCardMenu() {
     const menu = document.getElementById('power-card-menu');
     if (menu) {
+        const isHidden = menu.classList.contains('hidden');
         menu.classList.toggle('hidden');
-        // Populate power cards if not already done
-        if (!menu.classList.contains('hidden')) {
+        
+        if (!isHidden) {
+            // Menu is being closed
+            document.removeEventListener('click', handleOutsideClick);
+        } else {
+            // Menu is being opened
+            // Populate power cards if not already done
             populatePowerCards();
+            
+            // Add outside click handler
+            setTimeout(() => {
+                document.addEventListener('click', handleOutsideClick);
+            }, 10);
         }
+    }
+}
+
+function handleOutsideClick(event) {
+    const menu = document.getElementById('power-card-menu');
+    const button = document.querySelector('#power-cards-above-chat button');
+    
+    if (menu && !menu.classList.contains('hidden') && 
+        !menu.contains(event.target) && 
+        (!button || !button.contains(event.target))) {
+        closePowerCardMenu();
+        document.removeEventListener('click', handleOutsideClick);
     }
 }
 
@@ -3719,6 +3804,31 @@ function toggleDarkMode() {
     }
 }
 
+// Toggle power save mode
+function togglePowerSaveMode() {
+    document.body.classList.toggle('power-save');
+    const isPowerSave = document.body.classList.contains('power-save');
+    localStorage.setItem('powerSaveMode', isPowerSave ? 'true' : 'false');
+
+    const btn = document.getElementById('power-save-toggle');
+    if (btn) {
+        btn.classList.toggle('power-save-enabled', isPowerSave);
+    }
+}
+
+// Toggle animation mode
+function toggleAnimationMode() {
+    document.body.classList.toggle('animations-disabled');
+    const isAnimationsDisabled = document.body.classList.contains('animations-disabled');
+    localStorage.setItem('animationsDisabled', isAnimationsDisabled ? 'true' : 'false');
+
+    // Update slider
+    const slider = document.getElementById('animation-slider');
+    if (slider) {
+        slider.checked = !isAnimationsDisabled;
+    }
+}
+
 // Toggle sound
 function toggleSound() {
     soundManager.enabled = !soundManager.enabled;
@@ -3765,12 +3875,65 @@ function toggleTransparency() {
 
 // Initialize settings on page load
 document.addEventListener('DOMContentLoaded', () => {
-    // Load dark mode preference
+    // Default: animations disabled
+    document.body.classList.add('animations-disabled');
+
+    // Load dark mode preference (default to true for automatic dark mode)
     const savedDarkMode = localStorage.getItem('darkMode');
-    if (savedDarkMode === 'true') {
+    const isDarkMode = savedDarkMode !== null ? savedDarkMode === 'true' : true; // Default to true
+    if (isDarkMode) {
         document.body.classList.add('dark-mode');
         const btn = document.getElementById('dark-mode-toggle');
         if (btn) btn.classList.add('dark-enabled');
+    }
+    // Save the default if not set
+    if (savedDarkMode === null) {
+        localStorage.setItem('darkMode', 'true');
+    }
+
+    // Load power save mode preference (default to true for better performance)
+    const savedPowerSave = localStorage.getItem('powerSaveMode');
+    const isPowerSave = savedPowerSave !== null ? savedPowerSave === 'true' : true; // Default to true
+    if (isPowerSave) {
+        document.body.classList.add('power-save');
+        const btn = document.getElementById('power-save-toggle');
+        if (btn) btn.classList.add('power-save-enabled');
+    }
+    // Save the default if not set
+    if (savedPowerSave === null) {
+        localStorage.setItem('powerSaveMode', 'true');
+    }
+
+    // Load animation preference
+    const savedAnimationsDisabled = localStorage.getItem('animationsDisabled');
+    if (savedAnimationsDisabled === 'false') {
+        document.body.classList.remove('animations-disabled');
+        const slider = document.getElementById('animation-slider');
+        if (slider) slider.checked = true;
+    } else {
+        // Default is disabled, so add the class and update button
+        const slider = document.getElementById('animation-slider');
+        if (slider) slider.checked = false;
+    }
+
+    // Load background color preference
+    const savedBackgroundColor = localStorage.getItem('backgroundColor');
+    if (savedBackgroundColor) {
+        applyBackgroundColor(savedBackgroundColor);
+        const colorInput = document.getElementById('background-color');
+        if (colorInput) colorInput.value = savedBackgroundColor;
+    }
+
+    // Add realtime background color change for game
+    const gameColorInput = document.getElementById('game-background-color');
+    if (gameColorInput) {
+        gameColorInput.addEventListener('input', (e) => {
+            applyBackgroundColor(e.target.value);
+            localStorage.setItem('backgroundColor', e.target.value);
+        });
+        // Set current color
+        const currentColor = localStorage.getItem('backgroundColor') || '#1e3a5f';
+        gameColorInput.value = currentColor;
     }
 
     // Load sound preference (support both keys)
