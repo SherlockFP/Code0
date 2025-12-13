@@ -1,0 +1,20 @@
+{
+  "name": "agent0",
+  "version": "1.0.0",
+  "description": "AGENT0 - Multiplayer Codenames Game",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": ["game", "codenames", "multiplayer", "socket.io"],
+  "author": "",
+  "license": "MIT"
+}
