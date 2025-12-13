@@ -1399,6 +1399,9 @@ function login() {
         // Show lobby screen
         // Show lobby screen
         showScreen('lobby-screen');
+
+        // Change background to bluish after login
+        document.body.classList.add('post-login');
     });
 
     socket.once('error', (error) => {

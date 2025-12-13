@@ -89,6 +89,14 @@ body.dark-mode.power-save {
     background: #0f1a2a !important; /* Darker blue for dark mode */
 }
 
+body.post-login {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+body.dark-mode.post-login {
+    background: linear-gradient(135deg, #0f1a2a 0%, #1a2b3c 100%) !important;
+}
+
 .power-save .card.hover-ripple::after {
     display: none !important;
 }
