@@ -76,6 +76,15 @@ body.power-save * {
     animation: none !important;
 }
 
+body.power-save .card:hover:not(.revealed) {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+body.power-save .card:hover:not(.revealed)::after {
+    display: none !important;
+}
+
 body.power-save::before {
     /* Disable animated background */
     display: none;
@@ -2350,11 +2359,12 @@ h2 {
 
 /* Casusbaşı Paneli */
 .spymaster-panel {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #45b7d1 100%);
     padding: 25px;
     border-radius: 15px;
     margin-bottom: 20px;
     color: white;
+    box-shadow: 0 8px 32px rgba(255, 107, 107, 0.3);
 }
 
 .spymaster-panel h3 {
