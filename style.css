@@ -20,12 +20,9 @@ body{
     min-height: 100vh;
     color: #1f2937;
     overflow-x: hidden;
-    background: linear-gradient(135deg, #0a0e27 0%, #16213e 25%, #0f3460 50%, #533483 75%, #1a0033 100%);
-    background-size: 400% 400%;
-    animation: rainbowBg 60s ease infinite; /* Increased duration for better performance */
+    background: linear-gradient(135deg, #001122 0%, #003366 50%, #0066cc 100%);
     position: relative;
     cursor: auto;
-    will-change: background-position; /* Optimize animation performance */
 }
 
 /* Vibrant rainbow animated background */
