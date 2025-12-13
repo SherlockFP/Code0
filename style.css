@@ -53,7 +53,7 @@ body::before{
 }
 
 body.dark-mode {
-    background: linear-gradient(180deg, #0f1419 0%, #1a1f2e 50%, #0f1419 100%);
+    background: linear-gradient(135deg, #001122 0%, #003366 50%, #001122 100%);
     color: #e5e7eb;
 }
 
