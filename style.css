@@ -36,7 +36,7 @@ body::before{
     z-index: -4;
     background: linear-gradient(45deg,#ff006e 0%, #fb5607 15%, #ffbe0b 30%, #8338ec 45%, #3a86ff 60%, #06ffa5 75%, #ff006e 100%);
     background-size: 300% 300%;
-    filter: blur(70px) saturate(115%);
+    filter: blur(20px) saturate(115%);
     opacity: 0.08;
     animation: rainbowShift 90s linear infinite; /* Increased duration for better performance */
     pointer-events: none;
@@ -62,7 +62,7 @@ body.dark-mode {
 
 body.dark-mode::before {
     opacity: 0.12;
-    filter: blur(100px) saturate(150%);
+    filter: blur(20px) saturate(150%);
 }
 
 /* Power Save Mode */
