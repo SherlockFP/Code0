@@ -1455,6 +1455,62 @@ function logout() {
     location.reload();
 }
 
+// Global chat functions
+function sendGlobalMessage() {
+    const input = document.getElementById('global-chat-input');
+    const message = input.value.trim();
+    
+    if (!message) return;
+    
+    socket.emit('global-chat-message', message);
+    input.value = '';
+}
+
+// Listen for global chat messages
+socket.on('global-chat-message', (data) => {
+    const messagesContainer = document.getElementById('global-chat-messages');
+    
+    const messageEl = document.createElement('div');
+    messageEl.className = 'chat-message';
+    
+    const time = new Date().toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+    
+    messageEl.innerHTML = `
+        <div>
+            <span class="chat-message-username">${data.username}:</span>
+            <span class="chat-message-text">${escapeHtml(data.message)}</span>
+        </div>
+        <div class="chat-message-time">${time}</div>
+    `;
+    
+    messagesContainer.appendChild(messageEl);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    
+    // Keep only last 50 messages
+    while (messagesContainer.children.length > 50) {
+        messagesContainer.removeChild(messagesContainer.firstChild);
+    }
+});
+
+// Helper function to escape HTML
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// Enable Enter key to send message
+document.addEventListener('DOMContentLoaded', () => {
+    const globalChatInput = document.getElementById('global-chat-input');
+    if (globalChatInput) {
+        globalChatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendGlobalMessage();
+            }
+        });
+    }
+});
+
 // Refresh rooms list
 function refreshRooms() {
     socket.emit('get-rooms');

@@ -2303,6 +2303,26 @@ io.on('connection', (socket) => {
     });
 
     // Disconnect
+    // Global chat message handler
+    socket.on('global-chat-message', (message) => {
+        const player = players.get(socket.id);
+        if (!player) return;
+
+        // Basic message validation
+        if (!message || typeof message !== 'string') return;
+        const cleanMessage = message.trim().substring(0, 200);
+        if (!cleanMessage) return;
+
+        // Broadcast to all connected clients
+        io.emit('global-chat-message', {
+            username: player.username,
+            message: cleanMessage,
+            timestamp: Date.now()
+        });
+
+        console.log(`Global chat [${player.username}]: ${cleanMessage}`);
+    });
+
     socket.on('disconnect', () => {
         console.log('User disconnected:', socket.id);
         const player = players.get(socket.id);

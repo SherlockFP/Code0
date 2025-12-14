@@ -54,82 +54,117 @@
                 </div>
             </div>
 
-            <div class="lobby-grid">
-                <div class="rooms-section">
-                    <h2>Aktif Odalar</h2>
-                    <div id="rooms-list"></div>
-                    <button class="btn btn-refresh" onclick="refreshRooms()">🔄 Yenile</button>
+            <div class="lobby-main-grid">
+                <div class="lobby-left-section">
+                    <div class="lobby-grid">
+                        <div class="rooms-section">
+                            <h2>Aktif Odalar</h2>
+                            <div id="rooms-list"></div>
+                            <button class="btn btn-refresh" onclick="refreshRooms()">🔄 Yenile</button>
+                        </div>
+
+                        <div class="create-room-section">
+                            <h2>Yeni Oda Oluştur</h2>
+                            <div class="input-group">
+                                <label for="room-name">Oda Adı</label>
+                                <input type="text" id="room-name" placeholder="Oda adını girin" maxlength="25">
+                            </div>
+                            <div class="input-group">
+                                <label for="word-category">Kelime Seti</label>
+                                <select id="word-category">
+                                    <option value="genel">🎯 Genel</option>
+                                    <option value="hayvanlar">🦁 Hayvanlar</option>
+                                    <option value="ülkeler">🌍 Ülkeler</option>
+                                    <option value="yemekler">🍕 Yemekler</option>
+                                    <option value="spor">⚽ Spor</option>
+                                    <option value="teknoloji">💻 Teknoloji</option>
+                                    <option value="renk">🎨 Renkler</option>
+                                    <option value="random">🎲 Rastgele</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="max-players">Maksimum Oyuncu Sayısı</label>
+                                <select id="max-players">
+                                    <option value="4">4 Oyuncu</option>
+                                    <option value="6">6 Oyuncu</option>
+                                    <option value="8" selected>8 Oyuncu</option>
+                                    <option value="10">10 Oyuncu</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="draft-picks-create">🧩 Draft: Takım başı güç kartı</label>
+                                <select id="draft-picks-create">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4" selected>4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="fast-draft">⚡ Fast Draft</label>
+                                <input type="checkbox" id="fast-draft" checked>
+                            </div>
+                            <div class="input-group">
+                                <label>
+                                    <input type="checkbox" id="tournament-mode">
+                                    🏆 Tournament Modu
+                                </label>
+                            </div>
+                            <button class="btn btn-success" onclick="createRoom()">Oda Oluştur</button>
+                        </div>
+
+                        <div class="join-by-code-section">
+                            <h2>Koda Göre Katıl</h2>
+                            <div class="input-group">
+                                <label for="invite-code">Davet Kodu</label>
+                                <input type="text" id="invite-code" placeholder="Davet kodunu girin" maxlength="6" style="text-transform: uppercase;">
+                            </div>
+                            <button class="btn btn-primary" onclick="joinByCode()">Koda Göre Katıl</button>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="create-room-section">
-                    <h2>Yeni Oda Oluştur</h2>
-                    <div class="input-group">
-                        <label for="room-name">Oda Adı</label>
-                        <input type="text" id="room-name" placeholder="Oda adını girin" maxlength="25">
+                <div class="lobby-right-section">
+                    <div class="global-chat-section">
+                        <h2>💬 Global Chat</h2>
+                        <div id="global-chat-messages" class="chat-messages"></div>
+                        <div class="chat-input-container">
+                            <input type="text" id="global-chat-input" placeholder="Mesajınızı yazın..." maxlength="200">
+                            <button class="btn btn-primary btn-send" onclick="sendGlobalMessage()">Gönder</button>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <label for="word-category">Kelime Seti</label>
-                        <select id="word-category">
-                            <option value="genel">🎯 Genel</option>
-                            <option value="hayvanlar">🦁 Hayvanlar</option>
-                            <option value="ülkeler">🌍 Ülkeler</option>
-                            <option value="yemekler">🍕 Yemekler</option>
-                            <option value="spor">⚽ Spor</option>
-                            <option value="teknoloji">💻 Teknoloji</option>
-                            <option value="renk">🎨 Renkler</option>
-                            <option value="random">🎲 Rastgele</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label for="max-players">Maksimum Oyuncu Sayısı</label>
-                        <select id="max-players">
-                            <option value="4">4 Oyuncu</option>
-                            <option value="6">6 Oyuncu</option>
-                            <option value="8" selected>8 Oyuncu</option>
-                            <option value="10">10 Oyuncu</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label for="draft-picks-create">🧩 Draft: Takım başı güç kartı</label>
-                        <select id="draft-picks-create">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4" selected>4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                        </select>
-                    </div>
-                    <div class="input-group">
-                        <label for="fast-draft">⚡ Fast Draft (Seçilirse kartlar direkt dağıtılır, seçilmezse draft yapılır)</label>
-                        <input type="checkbox" id="fast-draft" checked>
-                    </div>
-                    <div class="input-group">
-                        <label>
-                            <input type="checkbox" id="tournament-mode">
-                            🏆 Tournament Modu (Power Cards Kapalı)
-                        </label>
-                    </div>
-                    <button class="btn btn-success" onclick="createRoom()">Oda Oluştur</button>
-                </div>
 
-                <div class="join-by-code-section">
-                    <h2>Koda Göre Katıl</h2>
-                    <div class="input-group">
-                        <label for="invite-code">Davet Kodu</label>
-                        <input type="text" id="invite-code" placeholder="Davet kodunu girin" maxlength="6" style="text-transform: uppercase;">
+                    <div class="changelog-section">
+                        <h2>📋 Changelog</h2>
+                        <div class="changelog-content">
+                            <div class="changelog-item">
+                                <div class="changelog-version">v2.0.0</div>
+                                <div class="changelog-date">14 Aralık 2024</div>
+                                <ul class="changelog-list">
+                                    <li>✨ Yeni yatay lobby tasarımı</li>
+                                    <li>💬 Global chat sistemi eklendi</li>
+                                    <li>⚡ GPU optimizasyonları (60 FPS)</li>
+                                    <li>🎨 Profesyonel UI/UX iyileştirmeleri</li>
+                                    <li>🐛 Login bug düzeltmesi</li>
+                                </ul>
+                            </div>
+                            <div class="changelog-item">
+                                <div class="changelog-version">v1.5.0</div>
+                                <div class="changelog-date">13 Aralık 2024</div>
+                                <ul class="changelog-list">
+                                    <li>🌙 Otomatik dark mode</li>
+                                    <li>🎮 Profesyonel takım seçimi</li>
+                                    <li>🎯 Draft sistemi iyileştirmeleri</li>
+                                    <li>🏆 Tournament modu</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <button class="btn btn-primary" onclick="joinByCode()">Koda Göre Katıl</button>
                 </div>
-            </div>
-
-            <div class="lobby-howto">
-                <h2>Nasıl Oynanır?</h2>
-                <p>İki takım (Kırmızı/Mavi) oynar. Her takımda 1 Casusbaşı ve Operatifler olur.</p>
-                <p>Casusbaşı tek kelimelik ipucu ve bir sayı verir. Operatifler bu ipucuna göre doğru kartları açmaya çalışır.</p>
-                <p>Yanlış renk / Nötr / Suikastçı kartı oyunun gidişatını değiştirir. Suikastçı açılırsa oyun biter.</p>
             </div>
         </div>
     </div>
