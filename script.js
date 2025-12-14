@@ -3669,6 +3669,13 @@ function backToTeamSelection() {
     if (currentRoom) {
         currentRoom.clue = null;
         currentRoom.gameState = 'waiting';
+        currentRoom.currentTurn = null;
+        currentRoom.gameStarted = false;
+        currentRoom.gameOver = false;
+        currentRoom.winner = null;
+        currentRoom.board = null;
+        currentRoom.bombLocks = null;
+        currentRoom.powerCardsEnabled = true; // Reset to default
     }
 }
 
