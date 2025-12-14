@@ -717,8 +717,9 @@ body.animations-disabled * {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
     z-index: 1;
+    align-items: stretch;
 }
 
 /* Professional Logo */
@@ -809,7 +810,19 @@ body.animations-disabled * {
 }
 
 #login-screen .input-group {
-    margin-bottom: 24px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+#login-screen .input-group label {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+#login-screen .input-group input {
+    width: 100%;
 }
 
 #login-screen .btn {
@@ -817,6 +830,7 @@ body.animations-disabled * {
     padding: 16px 24px;
     font-size: 1.1rem;
     font-weight: 600;
+    align-self: stretch;
 }
 
 /* Login screen rainbow background (no animation) */
