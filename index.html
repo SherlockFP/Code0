@@ -67,25 +67,24 @@
 
             <div class="lobby-main-grid">
                 <div class="lobby-left-section">
-                    <div class="lobby-grid">
-                        <div class="rooms-and-chat-container">
-                            <div class="rooms-section">
-                                <h2>Aktif Odalar</h2>
-                                <div id="rooms-list"></div>
-                                <button class="btn btn-refresh" onclick="refreshRooms()">🔄 Yenile</button>
-                            </div>
+                    <div class="rooms-section">
+                        <h2>Aktif Odalar</h2>
+                        <div id="rooms-list"></div>
+                        <button class="btn btn-refresh" onclick="refreshRooms()">🔄 Yenile</button>
+                    </div>
 
-                            <div class="global-chat-section">
-                                <h2>💬 Global Chat</h2>
-                                <div id="global-chat-messages" class="chat-messages"></div>
-                                <div class="chat-input-container">
-                                    <input type="text" id="global-chat-input" placeholder="Mesajınızı yazın..." maxlength="200">
-                                    <button class="btn btn-primary btn-send" onclick="sendGlobalMessage()">Gönder</button>
-                                </div>
-                            </div>
+                    <div class="global-chat-section">
+                        <h2>💬 Global Chat</h2>
+                        <div id="global-chat-messages" class="chat-messages"></div>
+                        <div class="chat-input-container">
+                            <input type="text" id="global-chat-input" placeholder="Mesajınızı yazın..." maxlength="200">
+                            <button class="btn btn-primary btn-send" onclick="sendGlobalMessage()">Gönder</button>
                         </div>
+                    </div>
+                </div>
 
-                        <div class="create-room-section">
+                <div class="lobby-right-section">
+                    <div class="create-room-section">
                             <h2>Yeni Oda Oluştur</h2>
                             <div class="input-group">
                                 <label for="room-name">Oda Adı</label>
@@ -146,14 +145,8 @@
                                 </div>
                                 <button class="btn btn-primary" onclick="joinByCode()">Koda Göre Katıl</button>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="lobby-right-section">
-            <div class="changelog-section">
+                            <div class="changelog-section">
                 <h2>📋 Changelog</h2>
                 <div class="changelog-content">
                     <div class="changelog-item">
