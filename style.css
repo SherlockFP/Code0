@@ -562,16 +562,15 @@ body.animations-disabled * {
 }
 
 .rooms-section {
-    flex: 1;
     min-height: 0;
-    max-height: 31vh;
+    max-height: 25vh;
+    flex-shrink: 0;
 }
 
 .create-room-section {
-    min-height: 35vh;
-    max-height: 70vh;
+    flex: 1;
+    min-height: 0;
     overflow-y: auto;
-    flex-shrink: 0;
 }
 
 .join-by-code-inline {
@@ -1281,8 +1280,8 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     display: flex;
     flex-direction: column;
     transform: translateZ(0);
-    height: 35vh;
-    flex-shrink: 0;
+    flex: 1;
+    min-height: 0;
 }
 
 .global-chat-section::before {
