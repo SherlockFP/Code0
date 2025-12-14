@@ -1334,10 +1334,48 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTransparencyMode();
 
     const root = document.documentElement;
-    window.addEventListener('mousemove', (e) => {
+
+    // Global mouse tracking for optional overlays (e.g., crosshair).
+    // Keep it cheap: update at most once per animation frame and only when actually needed.
+    const prefersReducedMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    let crosshairEl = null;
+
+    const effectsEnabled = () => {
+        if (prefersReducedMotion) return false;
+        const cl = document.body && document.body.classList;
+        if (!cl) return false;
+        return !cl.contains('power-save') && !cl.contains('animations-disabled');
+    };
+
+    const getCrosshairEl = () => {
+        if (crosshairEl && crosshairEl.isConnected) return crosshairEl;
+        crosshairEl = document.querySelector('.crosshair-overlay');
+        return crosshairEl;
+    };
+
+    const shouldTrackPointer = () => {
+        if (!effectsEnabled()) return false;
+        const ch = getCrosshairEl();
+        if (!ch) return false;
+        return !ch.classList.contains('hidden');
+    };
+
+    let pendingMove = null;
+    let moveRaf = 0;
+    const flushMove = () => {
+        moveRaf = 0;
+        const e = pendingMove;
+        pendingMove = null;
+        if (!e || !shouldTrackPointer()) return;
         root.style.setProperty('--mouse-x', `${e.clientX}px`);
         root.style.setProperty('--mouse-y', `${e.clientY}px`);
-    });
+    };
+
+    window.addEventListener('mousemove', (e) => {
+        if (!shouldTrackPointer()) return;
+        pendingMove = e;
+        if (!moveRaf) moveRaf = window.requestAnimationFrame(flushMove);
+    }, { passive: true });
 });
 
 // Login function

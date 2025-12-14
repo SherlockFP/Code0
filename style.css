@@ -509,10 +509,10 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     background-size: 220% 220%, 170% 170%, 260px 260px, 140% 260%;
     background-position: 50% 50%, 50% 110%, 0 0, 0 0;
     mix-blend-mode: screen;
-    filter: blur(6px) saturate(150%) contrast(110%);
+    filter: blur(4px) saturate(145%) contrast(108%);
     transform: translateZ(0);
-    will-change: background-position, opacity, filter;
-    animation: boardFireRise 2.8s linear infinite, boardFireFlicker 1.05s ease-in-out infinite;
+    will-change: auto;
+    animation: none;
 }
 
 /* Smoke layer (mouse-follow + drifting fog) */
@@ -545,14 +545,22 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     background-size: 240% 240%, 220% 220%, 180% 180%, 210% 210%;
     background-position: 50% 60%, 45% 72%, 40% 110%, 60% 105%;
     mix-blend-mode: overlay;
-    filter: blur(16px) contrast(108%) saturate(92%);
+    filter: blur(10px) contrast(106%) saturate(92%);
     transform: translateZ(0);
-    will-change: background-position, opacity, filter;
-    animation: boardSmokeDrift 3.8s linear infinite, boardSmokePulse 1.6s ease-in-out infinite;
+    will-change: auto;
+    animation: none;
 }
 
-.game-board.board-ripple::before { opacity: 0.92; }
-.game-board.board-ripple::after { opacity: 0.62; }
+.game-board.board-ripple::before {
+    opacity: 0.92;
+    will-change: background-position, opacity, filter;
+    animation: boardFireRise 3.6s linear infinite, boardFireFlicker 1.25s ease-in-out infinite;
+}
+.game-board.board-ripple::after {
+    opacity: 0.62;
+    will-change: background-position, opacity, filter;
+    animation: boardSmokeDrift 4.6s linear infinite, boardSmokePulse 2.2s ease-in-out infinite;
+}
 
 .game-board > .card {
     position: relative;
@@ -562,15 +570,15 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 @keyframes boardFireRise {
     0% {
         background-position: 50% 55%, 50% 115%, 0 0, 0 0;
-        filter: blur(6px) saturate(145%) contrast(108%);
+        filter: blur(4px) saturate(140%) contrast(106%);
     }
     50% {
         background-position: 55% 45%, 50% 82%, 120px -120px, 0 -120px;
-        filter: blur(6px) saturate(160%) contrast(112%);
+        filter: blur(4px) saturate(150%) contrast(110%);
     }
     100% {
         background-position: 50% 38%, 50% 45%, 260px -260px, 0 -240px;
-        filter: blur(6px) saturate(150%) contrast(110%);
+        filter: blur(4px) saturate(145%) contrast(108%);
     }
 }
 
@@ -583,15 +591,15 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 @keyframes boardSmokeDrift {
     0% {
         background-position: 48% 65%, 46% 76%, 38% 112%, 62% 108%;
-        filter: blur(15px) contrast(108%) saturate(92%);
+        filter: blur(10px) contrast(106%) saturate(92%);
     }
     50% {
         background-position: 54% 55%, 42% 70%, 48% 104%, 56% 100%;
-        filter: blur(17px) contrast(110%) saturate(90%);
+        filter: blur(11px) contrast(108%) saturate(90%);
     }
     100% {
         background-position: 50% 50%, 52% 62%, 58% 96%, 46% 92%;
-        filter: blur(15px) contrast(108%) saturate(92%);
+        filter: blur(10px) contrast(106%) saturate(92%);
     }
 }
 
@@ -769,9 +777,7 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 }
 
 /* Custom blue cursor */
-body {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="8" cy="8" r="6" fill="%235b7dff" stroke="%23667eea" stroke-width="1" opacity="0.9"/><path d="M8 1 L12 14 L14 11 Z" fill="%235b7dff" opacity="0.9"/></svg>') 8 8, auto;
-}
+/* (removed) */
 
 /* Card proximity highlight */
 .card.cursor-near {
