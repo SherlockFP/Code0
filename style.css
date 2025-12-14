@@ -570,7 +570,7 @@ body.animations-disabled * {
 
 .create-room-section {
     min-height: auto;
-    max-height: 62vh;
+    max-height: 63vh;
     overflow-y: auto;
     flex-shrink: 0;
 }
