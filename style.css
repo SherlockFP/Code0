@@ -4838,227 +4838,316 @@ body.game-live .card:not(.revealed) {
 
 @media (max-width: 600px) {
     .container {
-        max-width: 95%;
-        padding: 20px 16px;
-        margin: 8px;
+        max-width: 100%;
+        padding: 16px 12px;
+        margin: 0;
+        border-radius: 0;
     }
-    
+
     .screen {
-        padding: 8px;
+        padding: 0;
+        min-height: 100vh;
     }
-    
+
     h1 {
         font-size: 2em;
     }
-    
+
     .game-board {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
     }
-    
+
     .card {
         padding: 12px;
         font-size: 0.8em;
         min-height: 70px;
         letter-spacing: 0.5px;
     }
-    
+
     .dark-mode-toggle {
         width: 45px;
         height: 45px;
     }
-    
+
     .dark-mode-toggle .sun-icon,
     .dark-mode-toggle .moon-icon {
         font-size: 18px;
     }
-    
-    /* Lobi mobile optimization */
+
+    /* Mobile Lobi - Full Screen Layout */
     .lobby-content-wrapper {
-        padding: 12px !important;
+        padding: 16px !important;
+        min-height: calc(100vh - 32px);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
-    
+
+    /* Mobile Special: Hide changelog and global chat */
+    .changelog-container,
+    .global-chat-section,
+    .join-by-code-section {
+        display: none !important;
+    }
+
+    /* Mobile: Only show rooms and create room sections */
     .lobby-grid {
-        gap: 12px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 24px !important;
+        flex: 1;
     }
-    
+
+    .rooms-section {
+        flex: 1;
+        min-height: 250px;
+        max-height: 350px;
+        order: 1;
+        display: block !important;
+    }
+
+    .create-room-section {
+        flex: 2;
+        min-height: 400px;
+        order: 2;
+        display: block !important;
+    }
+
     .rooms-section,
     .create-room-section,
     .join-by-code-section {
-        padding: 16px !important;
-        border-radius: 16px !important;
+        padding: 20px !important;
+        border-radius: 20px !important;
+        margin: 0 !important;
+        width: 100% !important;
+        backdrop-filter: blur(8px) !important;
     }
-    
+
+    /* Input ve Button Optimizasyonları */
     .input-group {
-        margin-bottom: 14px;
+        margin-bottom: 16px;
     }
-    
-    .input-group input,
-    .input-group select {
-        padding: 14px 16px !important;
-        font-size: 16px !important;
-        border-radius: 14px !important;
-        min-height: 48px;
-    }
-    
+
     .input-group label {
-        font-size: 14px;
+        font-size: 16px;
         margin-bottom: 8px;
         font-weight: 600;
+        color: #ffffff;
     }
-    
-    .btn {
-        padding: 16px 24px !important;
+
+    .input-group input,
+    .input-group select {
+        padding: 16px 18px !important;
         font-size: 16px !important;
-        min-height: 52px;
-        border-radius: 14px !important;
-        font-weight: 700;
+        border-radius: 16px !important;
+        min-height: 56px !important;
+        border: 2px solid rgba(255,255,255,0.2) !important;
+        background: rgba(255,255,255,0.1) !important;
+        color: #ffffff !important;
+        backdrop-filter: blur(10px) !important;
     }
-    
+
+    .input-group input::placeholder {
+        color: rgba(255,255,255,0.7) !important;
+    }
+
+    .btn {
+        padding: 18px 28px !important;
+        font-size: 16px !important;
+        min-height: 60px !important;
+        border-radius: 16px !important;
+        font-weight: 700 !important;
+        width: 100% !important;
+        margin-top: 8px;
+    }
+
     .checkbox-row {
-        gap: 12px;
-        margin-bottom: 14px;
+        gap: 16px;
+        margin-bottom: 16px;
+        flex-direction: column;
+        align-items: flex-start;
     }
-    
+
     .checkbox-item {
-        padding: 12px;
+        padding: 12px 16px;
         font-size: 15px;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
-    
+
+    .checkbox-item input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Room Listesi */
+    #rooms-list {
+        max-height: 200px !important;
+        gap: 8px;
+    }
+
     .room-item {
         padding: 16px !important;
-        margin-bottom: 12px;
+        margin-bottom: 8px !important;
+        border-radius: 12px !important;
+        background: rgba(255,255,255,0.08) !important;
+        border: 1px solid rgba(255,255,255,0.15) !important;
     }
-    
+
     .room-name {
         font-size: 16px !important;
+        font-weight: 600;
+        color: #ffffff;
     }
-    
+
     .room-info {
-        font-size: 13px !important;
+        font-size: 14px !important;
+        color: rgba(255,255,255,0.8);
     }
-    
+
+    /* Başlıklar */
     h2 {
-        font-size: 1.4em !important;
-        margin-bottom: 12px;
+        font-size: 1.5em !important;
+        margin-bottom: 16px !important;
+        font-weight: 700;
+        color: #ffffff;
+        text-align: center;
     }
-    
+
+    /* Oyun Açıklamaları */
     .game-instructions {
         transform: scale(1) !important;
-        margin-top: 20px !important;
+        margin-top: 24px !important;
         padding: 20px !important;
+        border-radius: 16px !important;
+        background: rgba(255,255,255,0.08) !important;
+        border: 1px solid rgba(255,255,255,0.15) !important;
     }
-    
+
     .instructions-header h3 {
-        font-size: 16px !important;
+        font-size: 18px !important;
+        color: #ffffff;
+        text-align: center;
     }
-    
+
     .step-text {
-        font-size: 14px !important;
+        font-size: 15px !important;
+        color: rgba(255,255,255,0.9);
+    }
+
+    .step-text strong {
+        color: #ffffff;
+    }
+
+    /* Global Chat */
+    .global-chat-section {
+        height: 180px !important;
+        margin-top: 16px;
+    }
+
+    /* Changelog */
+    .changelog-section {
+        margin-top: 20px;
+        padding: 16px !important;
     }
 }
 
 @media (max-width: 400px) {
     .container {
-        max-width: 95%;
-        padding: 16px 12px;
+        max-width: 100%;
+        padding: 12px 8px;
     }
-    
+
     .game-board {
         grid-template-columns: repeat(2, 1fr);
         gap: 6px;
     }
-    
+
     .card {
         padding: 10px;
         font-size: 0.75em;
         min-height: 60px;
     }
-    
+
     .lobby-content-wrapper {
-        padding: 10px !important;
+        padding: 12px !important;
+        gap: 16px !important;
     }
-    
+
     .input-group input,
     .input-group select {
         padding: 16px !important;
         font-size: 16px !important;
+        min-height: 52px !important;
     }
-    
+
     .btn {
-        padding: 18px 24px !important;
+        padding: 16px 24px !important;
+        font-size: 16px !important;
+        min-height: 56px !important;
+    }
+
+    .rooms-section,
+    .create-room-section,
+    .join-by-code-section {
+        padding: 16px !important;
+    }
+
+    .checkbox-row {
+        gap: 12px;
+    }
+
+    .checkbox-item {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 1.3em !important;
+    }
+
+    .game-instructions {
+        padding: 16px !important;
+        margin-top: 20px !important;
+    }
+
+    .instructions-header h3 {
         font-size: 16px !important;
     }
-}
 
-/* Power Cards Above Chat */
-.power-cards-above-chat {
-    margin-top: 20px;
-    width: 100%;
-    max-width: 1320px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-}
+    .step-text {
+        font-size: 14px !important;
+    }
 
-/* Game Chat */
-.game-chat-section {
-    position: relative;
-    background: linear-gradient(145deg, rgba(255,255,255,0.35), rgba(248,250,252,0.25));
-    border: 2px solid rgba(255,255,255,0.3);
-    padding: 24px;
-    border-radius: 20px;
-    margin-top: 0px;
-    width: 100%;
-    max-width: 1320px;
-    margin-left: auto;
-    margin-right: auto;
-    max-height: 460px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.12),
-                inset 0 1px 0 rgba(255,255,255,0.4);
-    backdrop-filter: blur(20px) saturate(180%);
-    margin-bottom: 120px;
-    will-change: transform;
-    overflow: hidden;
-}
-
-.game-chat-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-    opacity: 0.6;
-}
-
-/* DenemeChat (popup chat - experimental & removable) */
-.denemechat-toggle {
-    position: fixed;
-    left: 18px;
-    top: 18px;
-    z-index: 120;
-}
-
-.denemechat-panel {
-    position: fixed;
-    left: 18px;
-    top: 74px;
-    width: min(380px, calc(100vw - 36px));
-    max-height: min(60vh, 520px);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 14px;
-    border-radius: 18px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.30), rgba(255,255,255,0.14));
-    border: 1px solid rgba(255,255,255,0.18);
-    box-shadow: 0 18px 46px rgba(0,0,0,0.14);
-    backdrop-filter: blur(14px) saturate(160%);
+    .global-chat-section {
+        height: 160px !important;
+    }
+    
+    /* Mobile Special: Hide changelog and global chat on small screens too */
+    .changelog-container,
+    .global-chat-section,
+    .join-by-code-section {
+        display: none !important;
+    }
+    
+    .rooms-section {
+        flex: 1;
+        min-height: 200px;
+        max-height: 300px;
+        display: block !important;
+    }
+    
+    .create-room-section {
+        flex: 2;
+        min-height: 350px;
+        display: block !important;
+    }
     z-index: 120;
 }
 
