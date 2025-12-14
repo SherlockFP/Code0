@@ -67,33 +67,17 @@ body.dark-mode::before {
 
 /* Power Save Mode */
 body.power-save {
-    /* Completely disable all visual effects */
+    /* Reduce motion site-wide without breaking layout/menus */
     transition: none !important;
-    backdrop-filter: none !important;
 }
 
 body.power-save * {
     transition: none !important;
     animation: none !important;
-    transform: none !important;
-    backdrop-filter: none !important;
-}
-
-body.power-save *:hover {
-    transform: none !important;
-    box-shadow: none !important;
-    background: inherit !important;
-    backdrop-filter: none !important;
-}
-
-body.power-save *:hover::before,
-body.power-save *:hover::after {
-    display: none !important;
-    opacity: 0 !important;
-    animation: none !important;
 }
 
 body.power-save .card {
+    /* Cards should be cheap to render */
     backdrop-filter: none !important;
 }
 
@@ -154,17 +138,15 @@ body.power-save .btn-warning:hover,
 body.power-save .btn-team:hover {
     transform: none !important;
     box-shadow: none !important;
-    background: inherit !important;
 }
 
 body.power-save .reaction-buttons button:hover {
-    background: inherit !important;
     transform: none !important;
 }
 
 body.power-save::before {
-    /* Disable animated background */
-    display: none;
+    /* Keep the look, stop the animation (cheaper than hiding the layer) */
+    animation: none !important;
 }
 
 body.game-started {
