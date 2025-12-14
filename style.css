@@ -1279,7 +1279,7 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     position: relative;
     display: flex;
     flex-direction: column;
-    transform: translateZ(0);
+    transform: translateZ(0) scale(1.05);
     height: 280px;
     flex-shrink: 0;
 }
@@ -2601,15 +2601,16 @@ h2 {
 
 .game-instructions {
     margin-top: 25px;
-    background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 12px;
-    padding: 18px;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    background: linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.15));
+    border: 2px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 28px;
+    backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: 0 20px 60px rgba(8,10,20,0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
     position: relative;
     overflow: hidden;
-    transform: scale(0.95);
+    transform: scale(0.9);
     transform-origin: top center;
 }
 
