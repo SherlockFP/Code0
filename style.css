@@ -4893,10 +4893,12 @@ body.game-live .card:not(.revealed) {
 
     /* Mobile: Only show rooms and create room sections */
     .lobby-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 24px !important;
-        flex: 1;
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 16px !important;
+        transform: scale(0.6) !important;
+        transform-origin: top center !important;
+        margin-top: -20px !important;
     }
 
     .rooms-section {
@@ -5147,6 +5149,16 @@ body.game-live .card:not(.revealed) {
         flex: 2;
         min-height: 350px;
         display: block !important;
+    }
+    
+    /* Mobile: Scale desktop layout for small screens */
+    .lobby-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 12px !important;
+        transform: scale(0.45) !important;
+        transform-origin: top center !important;
+        margin-top: -40px !important;
     }
     z-index: 120;
 }
