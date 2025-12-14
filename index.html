@@ -68,10 +68,21 @@
             <div class="lobby-main-grid">
                 <div class="lobby-left-section">
                     <div class="lobby-grid">
-                        <div class="rooms-section">
-                            <h2>Aktif Odalar</h2>
-                            <div id="rooms-list"></div>
-                            <button class="btn btn-refresh" onclick="refreshRooms()">🔄 Yenile</button>
+                        <div class="rooms-and-chat-container">
+                            <div class="rooms-section">
+                                <h2>Aktif Odalar</h2>
+                                <div id="rooms-list"></div>
+                                <button class="btn btn-refresh" onclick="refreshRooms()">🔄 Yenile</button>
+                            </div>
+
+                            <div class="global-chat-section">
+                                <h2>💬 Global Chat</h2>
+                                <div id="global-chat-messages" class="chat-messages"></div>
+                                <div class="chat-input-container">
+                                    <input type="text" id="global-chat-input" placeholder="Mesajınızı yazın..." maxlength="200">
+                                    <button class="btn btn-primary btn-send" onclick="sendGlobalMessage()">Gönder</button>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="create-room-section">
@@ -135,15 +146,6 @@
                                 <input type="text" id="invite-code" placeholder="Davet kodunu girin" maxlength="6" style="text-transform: uppercase;">
                             </div>
                             <button class="btn btn-primary" onclick="joinByCode()">Koda Göre Katıl</button>
-                        </div>
-                    </div>
-
-                    <div class="global-chat-section">
-                        <h2>💬 Global Chat</h2>
-                        <div id="global-chat-messages" class="chat-messages"></div>
-                        <div class="chat-input-container">
-                            <input type="text" id="global-chat-input" placeholder="Mesajınızı yazın..." maxlength="200">
-                            <button class="btn btn-primary btn-send" onclick="sendGlobalMessage()">Gönder</button>
                         </div>
                     </div>
                 </div>
