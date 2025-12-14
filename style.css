@@ -563,7 +563,7 @@ body.animations-disabled * {
 .rooms-section, .create-room-section, .join-by-code-section {
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.5), rgba(248, 250, 252, 0.35));
     border: 2px solid rgba(102, 126, 234, 0.25);
-    padding: 0.8vh 0.8vw;
+    padding: 0.6vh 0.6vw;
     border-radius: 12px;
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(20px) saturate(170%);
@@ -577,19 +577,19 @@ body.animations-disabled * {
 .rooms-section {
     flex: 1;
     min-height: 0;
-    max-height: 33vh;
+    max-height: 30vh;
 }
 
 .create-room-section {
     min-height: auto;
-    max-height: 65vh;
+    max-height: 60vh;
     overflow-y: auto;
     flex-shrink: 0;
 }
 
 .join-by-code-inline {
-    margin-top: 1vh;
-    padding: 0.8vh 0.8vw;
+    margin-top: 0.6vh;
+    padding: 0.6vh 0.6vw;
     background: linear-gradient(145deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
     border: 2px solid rgba(102, 126, 234, 0.2);
     border-radius: 10px;
@@ -620,7 +620,7 @@ body.animations-disabled * {
 }
 
 #rooms-list {
-    max-height: 24vh;
+    max-height: 22vh;
     overflow-y: auto;
     padding: 0.5vh;
     display: grid;
@@ -1219,9 +1219,9 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 
 .lobby-content-wrapper {
     flex: 1;
-    max-width: 98vw;
+    max-width: 99vw;
     width: 100%;
-    padding: 0.6vh 1vw;
+    padding: 0.4vh 0.6vw;
     overflow-y: auto;
     margin: 0 auto;
     display: flex;
@@ -1232,8 +1232,8 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 /* Lobby main grid - horizontal layout with left and right sections */
 .lobby-main-grid {
     display: grid;
-    grid-template-columns: 1fr 38vw 20vw;
-    gap: 1vw;
+    grid-template-columns: 1fr 32vw 15vw;
+    gap: 0.6vw;
     align-items: start;
     flex: 1;
     min-height: 0;
@@ -1243,7 +1243,7 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 .lobby-left-section {
     display: flex;
     flex-direction: column;
-    gap: 1vh;
+    gap: 0.6vh;
     min-height: 0;
     overflow: hidden;
 }
@@ -1253,7 +1253,7 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 .lobby-right-section {
     display: flex;
     flex-direction: column;
-    gap: 1vh;
+    gap: 0.6vh;
     overflow-y: auto;
     max-height: 100%;
 }
@@ -1268,7 +1268,7 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 .global-chat-section {
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.5), rgba(248, 250, 252, 0.35));
     border: 2px solid rgba(102, 126, 234, 0.25);
-    padding: 0.8vh 0.8vw;
+    padding: 0.6vh 0.6vw;
     border-radius: 12px;
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(20px) saturate(170%);
@@ -1277,7 +1277,7 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     flex-direction: column;
     will-change: transform;
     transform: translateZ(0);
-    height: 24vh;
+    height: 22vh;
     flex-shrink: 0;
 }
 
@@ -1384,7 +1384,7 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 .changelog-section {
     background: linear-gradient(145deg, rgba(255, 255, 255, 0.5), rgba(248, 250, 252, 0.35));
     border: 2px solid rgba(102, 126, 234, 0.25);
-    padding: 0.8vh 0.8vw;
+    padding: 0.6vh 0.6vw;
     border-radius: 12px;
     box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(20px) saturate(170%);
@@ -2385,8 +2385,8 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.6vh;
-    padding: 0.5vh 0.8vw;
+    margin-bottom: 0.4vh;
+    padding: 0.3vh 0.5vw;
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.12), rgba(118, 75, 162, 0.12));
     border-radius: 10px;
     border: 2px solid rgba(102, 126, 234, 0.3);
