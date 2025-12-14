@@ -233,6 +233,15 @@ body.dark-mode::before {
     color: #f3f4f6;
 }
 
+.dark-mode #chat-toggle-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e5e7eb;
+}
+
+.dark-mode #chat-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
 .dark-mode .game-chat-message.team {
     background: linear-gradient(135deg, rgba(102,126,234,0.22), rgba(118,75,162,0.18));
     border-left-color: rgba(102,126,234,0.9);
@@ -3290,6 +3299,21 @@ body.game-live .card:not(.revealed) {
     color: #1f2937;
 }
 
+#chat-toggle-btn {
+    padding: 4px 8px;
+    font-size: 16px;
+    border: none;
+    background: rgba(107, 114, 128, 0.1);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#chat-toggle-btn:hover {
+    background: rgba(107, 114, 128, 0.2);
+    transform: scale(1.05);
+}
+
 .chat-subtitle {
     font-size: 12px;
     color: #6b7280;
@@ -4508,97 +4532,9 @@ body.draft-no-scroll {
     background: rgba(255,255,255,0.08);
 }
 
-.gif-picker {
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    right: 0;
-    background: rgba(255,255,255,0.95);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    max-height: 300px;
-    overflow-y: auto;
-    z-index: 1000;
-}
 
-.gif-picker input {
-    width: 100%;
-    padding: 5px;
-    margin-bottom: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
 
-.gif-picker button {
-    padding: 5px 10px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
 
-.gif-picker button:hover {
-    background: #0056b3;
-}
-
-#gif-results {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 5px;
-    margin-top: 10px;
-}
-
-.gif-item {
-    cursor: pointer;
-    border-radius: 4px;
-    overflow: hidden;
-    transition: transform 0.2s;
-}
-
-.gif-item:hover {
-    transform: scale(1.05);
-}
-
-.gif-item img {
-    width: 100%;
-    height: 80px;
-    object-fit: cover;
-}
-
-.dark-mode .gif-picker {
-    background: rgba(30,30,30,0.95);
-    border-color: #555;
-}
-
-.dark-mode .gif-picker input {
-    background: #333;
-    color: white;
-    border-color: #555;
-}
-
-.dark-mode .gif-picker button {
-    background: #28a745;
-}
-
-.dark-mode .gif-picker button:hover {
-    background: #1e7e34;
-}
-
-.chat-gif {
-    max-width: 200px;
-    max-height: 150px;
-    border-radius: 8px;
-    margin: 4px 0;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.chat-gif:hover {
-    transform: scale(1.1);
-}
 
 /* Emoji Reactions */
 .emoji-reaction {
