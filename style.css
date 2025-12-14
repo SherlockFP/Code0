@@ -2601,15 +2601,16 @@ h2 {
 
 .game-instructions {
     margin-top: 35px;
-    background: linear-gradient(145deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08));
-    border: 2px solid rgba(255,255,255,0.2);
-    border-radius: 20px;
-    padding: 28px;
-    backdrop-filter: blur(15px) saturate(160%);
-    box-shadow: 0 15px 45px rgba(8,10,20,0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 20px;
+    backdrop-filter: blur(12px) saturate(140%);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    min-height: 300px;
     transform: scale(0.85);
     transform-origin: top center;
 }
