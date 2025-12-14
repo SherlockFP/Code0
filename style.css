@@ -1379,10 +1379,11 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 }
 
 .btn-send {
-    padding: 8px 14px;
+    padding: 8px 10px;
     white-space: nowrap;
-    font-size: 13px;
+    font-size: 12px;
     flex-shrink: 0;
+    min-width: fit-content;
 }
 
 /* Changelog Section */
