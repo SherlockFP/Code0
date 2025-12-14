@@ -2257,7 +2257,18 @@ h2 {
 
 /* Lobi Ekranı */
 .lobby-header {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 24px;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.12), rgba(118, 75, 162, 0.12));
+    border-radius: 16px;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .lobby-logo {
@@ -7040,11 +7051,22 @@ h1 {
     color: #a5b4fc;
 }
 
+.dark-mode .lobby-header {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+    border-color: rgba(102, 126, 234, 0.4);
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.25);
+}
+
 .dark-mode .lobby-logo h1 {
     background: linear-gradient(135deg, #a5b4fc 0%, #c4b5fd 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.dark-mode .user-bar {
+    background: linear-gradient(145deg, rgba(51, 65, 85, 0.6), rgba(30, 41, 59, 0.4));
+    border-color: rgba(100, 116, 139, 0.3);
 }
 
 .dark-mode .welcome-text {
