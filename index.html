@@ -42,7 +42,7 @@
 
     <!-- Lobi Ekranı -->
     <div id="lobby-screen" class="screen hidden">
-        <div class="lobby-header-wrapper">
+        <div class="lobby-content-wrapper">
             <div class="lobby-header">
                 <div class="lobby-logo">
                     <span class="lobby-logo-icon">🎯</span>
@@ -53,11 +53,8 @@
                     <button class="btn btn-small btn-secondary" onclick="logout()">Çıkış</button>
                 </div>
             </div>
-        </div>
 
-        <div class="lobby-main-container">
-            <div class="lobby-content-wrapper">
-                <div class="lobby-main-grid">
+            <div class="lobby-main-grid">
                 <div class="lobby-left-section">
                     <div class="lobby-grid">
                         <div class="rooms-section">
@@ -130,45 +127,44 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="lobby-right-section">
-                    <div class="global-chat-section">
-                        <h2>💬 Global Chat</h2>
-                        <div id="global-chat-messages" class="chat-messages"></div>
-                        <div class="chat-input-container">
-                            <input type="text" id="global-chat-input" placeholder="Mesajınızı yazın..." maxlength="200">
-                            <button class="btn btn-primary btn-send" onclick="sendGlobalMessage()">Gönder</button>
-                        </div>
-                    </div>
-
-                    <div class="changelog-section">
-                        <h2>📋 Changelog</h2>
-                        <div class="changelog-content">
-                            <div class="changelog-item">
-                                <div class="changelog-version">v2.0.0</div>
-                                <div class="changelog-date">14 Aralık 2024</div>
-                                <ul class="changelog-list">
-                                    <li>✨ Yeni yatay lobby tasarımı</li>
-                                    <li>💬 Global chat sistemi eklendi</li>
-                                    <li>⚡ GPU optimizasyonları (60 FPS)</li>
-                                    <li>🎨 Profesyonel UI/UX iyileştirmeleri</li>
-                                    <li>🐛 Login bug düzeltmesi</li>
-                                </ul>
-                            </div>
-                            <div class="changelog-item">
-                                <div class="changelog-version">v1.5.0</div>
-                                <div class="changelog-date">13 Aralık 2024</div>
-                                <ul class="changelog-list">
-                                    <li>🌙 Otomatik dark mode</li>
-                                    <li>🎮 Profesyonel takım seçimi</li>
-                                    <li>🎯 Draft sistemi iyileştirmeleri</li>
-                                    <li>🏆 Tournament modu</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+        <div class="lobby-right-section">
+            <div class="global-chat-section">
+                <h2>💬 Global Chat</h2>
+                <div id="global-chat-messages" class="chat-messages"></div>
+                <div class="chat-input-container">
+                    <input type="text" id="global-chat-input" placeholder="Mesajınızı yazın..." maxlength="200">
+                    <button class="btn btn-primary btn-send" onclick="sendGlobalMessage()">Gönder</button>
                 </div>
             </div>
+
+            <div class="changelog-section">
+                <h2>📋 Changelog</h2>
+                <div class="changelog-content">
+                    <div class="changelog-item">
+                        <div class="changelog-version">v2.0.0</div>
+                        <div class="changelog-date">14 Aralık 2024</div>
+                        <ul class="changelog-list">
+                            <li>✨ Yeni yatay lobby tasarımı</li>
+                            <li>💬 Global chat sistemi eklendi</li>
+                            <li>⚡ GPU optimizasyonları (60 FPS)</li>
+                            <li>🎨 Profesyonel UI/UX iyileştirmeleri</li>
+                            <li>🐛 Login bug düzeltmesi</li>
+                        </ul>
+                    </div>
+                    <div class="changelog-item">
+                        <div class="changelog-version">v1.5.0</div>
+                        <div class="changelog-date">13 Aralık 2024</div>
+                        <ul class="changelog-list">
+                            <li>🌙 Otomatik dark mode</li>
+                            <li>🎮 Profesyonel takım seçimi</li>
+                            <li>🎯 Draft sistemi iyileştirmeleri</li>
+                            <li>🏆 Tournament modu</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

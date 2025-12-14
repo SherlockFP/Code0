@@ -1153,30 +1153,14 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 
 /* Lobby menu layout - horizontal 3-column design */
 #lobby-screen {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 420px;
     height: 100vh;
     overflow: hidden;
 }
 
-.lobby-header-wrapper {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    padding: 24px 40px;
-    border-bottom: 2px solid rgba(102, 126, 234, 0.2);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-}
-
-.lobby-main-container {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 420px;
-    gap: 0;
-    overflow: hidden;
-}
-
 .lobby-content-wrapper {
-    padding: 24px;
+    padding: 40px;
     overflow-y: auto;
 }
 
@@ -1207,7 +1191,7 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     display: flex;
     flex-direction: column;
     gap: 20px;
-    padding: 24px;
+    padding: 40px 24px;
     background: linear-gradient(145deg, rgba(248, 250, 252, 0.95), rgba(241, 245, 249, 0.9));
     border-left: 2px solid rgba(102, 126, 234, 0.2);
     overflow-y: auto;
@@ -1414,11 +1398,6 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 }
 
 /* Dark mode for lobby */
-.dark-mode .lobby-header-wrapper {
-    background: rgba(15, 23, 42, 0.95);
-    border-bottom-color: rgba(100, 116, 139, 0.3);
-}
-
 .dark-mode .lobby-right-section {
     background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
     border-left-color: rgba(100, 116, 139, 0.3);
@@ -2193,8 +2172,10 @@ h2 {
 
 /* Lobi Ekranı */
 .lobby-header {
+    margin-bottom: 30px;
     max-width: 1600px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .lobby-logo {
@@ -4317,7 +4298,7 @@ body.game-live .card:not(.revealed) {
 }
 
 @media (max-width: 1400px) {
-    .lobby-main-container {
+    #lobby-screen {
         grid-template-columns: 1fr 380px;
     }
 
@@ -4331,7 +4312,7 @@ body.game-live .card:not(.revealed) {
 }
 
 @media (max-width: 1200px) {
-    .lobby-main-container {
+    #lobby-screen {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr auto;
     }
@@ -4353,8 +4334,8 @@ body.game-live .card:not(.revealed) {
 }
 
 @media (max-width: 900px) {
-    .lobby-header-wrapper {
-        padding: 20px 24px;
+    .lobby-content-wrapper {
+        padding: 24px;
     }
 
     .lobby-grid {
