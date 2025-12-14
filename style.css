@@ -79,10 +79,22 @@ body.power-save * {
 body.power-save .card:hover:not(.revealed) {
     transform: none !important;
     box-shadow: none !important;
+    background: inherit !important;
 }
 
 body.power-save .card:hover:not(.revealed)::after {
     display: none !important;
+    opacity: 0 !important;
+    animation: none !important;
+}
+
+body.power-save .card.cursor-near {
+    transform: none !important;
+}
+
+body.power-save .card.cursor-near::after {
+    display: none !important;
+    opacity: 0 !important;
 }
 
 body.power-save::before {
