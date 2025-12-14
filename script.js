@@ -3548,7 +3548,11 @@ socket.on('message', (data) => {
     }
 
     messagesContainer.appendChild(messageElement);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    
+    // Optimize scroll with requestAnimationFrame
+    requestAnimationFrame(() => {
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    });
 });
 
 // Private messages (DenemeChat)
