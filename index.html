@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGENT0 - Profesyonel Multiplayer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Giriş Ekranı -->
+    <div id="login-screen" class="screen">
+        <div class="container">
+            <h1>🎯 AGENT0</h1>
+            <p class="subtitle">Kelime Tabanlı Takım Oyunu</p>
+            <div class="input-group">
+                <label for="username">Kullanıcı Adınız</label>
+                <input type="text" id="username" placeholder="Bir kullanıcı adı girin" maxlength="15">
+            </div>
+            <button class="btn btn-primary" onclick="login()">Oyuna Gir</button>
+        </div>
+    </div>
+
+    <!-- Lobi Ekranı -->
+    <div id="lobby-screen" class="screen hidden">
+        <div class="container wide floating">
+            <h1>🎯 AGENT0 LOBISI</h1>
+            <div class="user-bar">
+                <span>Hoş geldin, <strong id="current-username"></strong></span>
+                <button class="btn btn-small btn-secondary" onclick="logout()">Çıkış</button>
+            </div>
+
+            <div class="lobby-grid">
+                <div class="rooms-section">
+                    <h2>Aktif Odalar</h2>
+                    <div id="rooms-list"></div>
+                    <button class="btn btn-refresh" onclick="refreshRooms()">🔄 Yenile</button>
+                </div>
+
+                <div class="create-room-section">
+                    <h2>Yeni Oda Oluştur</h2>
+                    <div class="input-group">
+                        <label for="room-name">Oda Adı</label>
+                        <input type="text" id="room-name" placeholder="Oda adını girin" maxlength="25">
+                    </div>
+                    <div class="input-group">
+                        <label for="word-category">Kelime Seti</label>
+                        <select id="word-category">
+                            <option value="genel">🎯 Genel</option>
+                            <option value="hayvanlar">🦁 Hayvanlar</option>
+                            <option value="ülkeler">🌍 Ülkeler</option>
+                            <option value="yemekler">🍕 Yemekler</option>
+                            <option value="spor">⚽ Spor</option>
+                            <option value="teknoloji">💻 Teknoloji</option>
+                            <option value="renk">🎨 Renkler</option>
+                            <option value="random">🎲 Rastgele</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="max-players">Maksimum Oyuncu Sayısı</label>
+                        <select id="max-players">
+                            <option value="4">4 Oyuncu</option>
+                            <option value="6">6 Oyuncu</option>
+                            <option value="8" selected>8 Oyuncu</option>
+                            <option value="10">10 Oyuncu</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="draft-picks-create">🧩 Draft: Takım başı güç kartı</label>
+                        <select id="draft-picks-create">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4" selected>4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>
+                            <input type="checkbox" id="tournament-mode">
+                            🏆 Tournament Modu (Power Cards Kapalı)
+                        </label>
+                    </div>
+                    <button class="btn btn-success" onclick="createRoom()">Oda Oluştur</button>
+                </div>
+
+                <div class="join-by-code-section">
+                    <h2>Koda Göre Katıl</h2>
+                    <div class="input-group">
+                        <label for="invite-code">Davet Kodu</label>
+                        <input type="text" id="invite-code" placeholder="Davet kodunu girin" maxlength="6" style="text-transform: uppercase;">
+                    </div>
+                    <button class="btn btn-primary" onclick="joinByCode()">Koda Göre Katıl</button>
+                </div>
+            </div>
+
+            <div class="lobby-howto">
+                <h2>Nasıl Oynanır?</h2>
+                <p>İki takım (Kırmızı/Mavi) oynar. Her takımda 1 Casusbaşı ve Operatifler olur.</p>
+                <p>Casusbaşı tek kelimelik ipucu ve bir sayı verir. Operatifler bu ipucuna göre doğru kartları açmaya çalışır.</p>
+                <p>Yanlış renk / Nötr / Suikastçı kartı oyunun gidişatını değiştirir. Suikastçı açılırsa oyun biter.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Oda/Oyun Ekranı -->
+    <div id="room-screen" class="screen hidden">
+        <div class="container full">
+            <!-- Üst Bar -->
+            <div class="top-bar">
+                <div class="room-info">
+                    <h2 id="room-title"></h2>
+                    <span id="room-status"></span>
+                    <span id="invite-code-display"></span>
+                </div>
+                <div class="top-actions">
+                    <div class="audio-controls">
+                        <button id="audio-toggle" class="icon-btn" onclick="toggleAudio()" title="Müziği aç/kapat">🔊</button>
+                        <input id="audio-volume" type="range" min="0" max="1" step="0.05" value="0.6" onchange="setAudioVolume(this.value)" title="Ses seviyesi">
+                    </div>
+
+                    <!-- Reactions + horn moved to top bar -->
+                    <div id="reaction-bar" class="reaction-bar">
+                        <button id="horn-btn" class="icon-btn" onclick="sendHorn()" title="Korna">📯</button>
+                        <button class="reaction-toggle icon-btn" onclick="toggleReactionBar()" title="Emoji">😀</button>
+                        <div class="reaction-buttons hidden" id="reaction-buttons">
+                            <button onclick="sendReaction('😀')">😀</button>
+                            <button onclick="sendReaction('😂')">😂</button>
+                            <button onclick="sendReaction('❤️')">❤️</button>
+                            <button onclick="sendReaction('👍')">👍</button>
+                            <button onclick="sendReaction('🔥')">🔥</button>
+                            <button onclick="sendReaction('🎉')">🎉</button>
+                        </div>
+                    </div>
+
+                    <button id="close-lobby-btn" class="btn btn-small btn-danger hidden" onclick="closeLobby()">Lobiyi Kapat</button>
+                    <button id="dark-mode-toggle" class="dark-mode-toggle" onclick="toggleDarkMode()" title="Dark Mode Toggle">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌙</span>
+                    </button>
+                    <button id="power-save-toggle" class="power-save-toggle" onclick="togglePowerSaveMode()" title="Power Save Mode Toggle">
+                        <span class="power-save-icon">🔋</span>
+                    </button>
+                    <input type="color" id="background-color" onchange="applyBackgroundColor(this.value); localStorage.setItem('backgroundColor', this.value);" title="Arka plan rengini değiştir" style="margin-left: 8px; border: none; width: 32px; height: 32px; cursor: pointer; border-radius: 50%;">
+                    <button class="btn btn-small btn-danger" onclick="leaveRoom()">Odadan Ayrıl</button>
+                </div>
+            </div>
+
+            <!-- Bot Yönetimi -->
+            <div id="bot-management" class="bot-management hidden">
+                <h3>🤖 Bot Yönetimi</h3>
+                <div class="bot-options">
+                    <div class="bot-add-section">
+                        <h4>Bot Ekle</h4>
+                        <div class="bot-add-controls">
+                            <select id="bot-team-select">
+                                <option value="RED">Kırmızı Takım</option>
+                                <option value="BLUE">Mavi Takım</option>
+                            </select>
+                            <select id="bot-role-select">
+                                <option value="SPYMASTER">Casusbaşı</option>
+                                <option value="OPERATIVE">Operatif</option>
+                            </select>
+                            <button class="btn btn-secondary" onclick="addBotFromMenu()">Bot Ekle</button>
+                        </div>
+                    </div>
+                    <div class="bot-list-section">
+                        <h4>Mevcut Botlar</h4>
+                        <div id="bot-list"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Takım Seçim Aşaması -->
+            <div id="team-selection-phase" class="phase">
+                <div class="teams-container">
+                    <div class="team-group">
+                        <div id="red-operatives-above" class="team-players-above"></div>
+                        <div class="team-panel red-team">
+                            <h3>🔴 KIRMIZI TAKIM</h3>
+                            <div class="role-section">
+                                <h4>Casusbaşı</h4>
+                                <div id="red-spymaster" class="player-slot"></div>
+                            </div>
+                            <div class="role-section">
+                                <h4>Operatifler</h4>
+                                <div id="red-operatives" class="player-slots"></div>
+                            </div>
+                            <div class="team-actions">
+                                <button class="btn btn-team red" onclick="joinTeam('RED', 'SPYMASTER')">Casusbaşı Ol</button>
+                                <button class="btn btn-team red" onclick="joinTeam('RED', 'OPERATIVE')">Operatif Ol</button>
+                                <button class="btn btn-secondary btn-small" onclick="addBot('RED', 'SPYMASTER')">🤖 Bot Casusbaşı</button>
+                                <button class="btn btn-secondary btn-small" onclick="addBot('RED', 'OPERATIVE')">🤖 Bot Operatif</button>
+                            </div>
+                        </div>
+                        <div id="red-spymasters-below" class="team-players-below"></div>
+                    </div>
+
+                    <div class="team-group">
+                        <div id="blue-operatives-above" class="team-players-above"></div>
+                        <div class="team-panel blue-team">
+                            <h3>🔵 MAVİ TAKIM</h3>
+                            <div class="role-section">
+                                <h4>Casusbaşı</h4>
+                                <div id="blue-spymaster" class="player-slot"></div>
+                            </div>
+                            <div class="role-section">
+                                <h4>Operatifler</h4>
+                                <div id="blue-operatives" class="player-slots"></div>
+                            </div>
+                            <div class="team-actions">
+                                <button class="btn btn-team blue" onclick="joinTeam('BLUE', 'SPYMASTER')">Casusbaşı Ol</button>
+                                <button class="btn btn-team blue" onclick="joinTeam('BLUE', 'OPERATIVE')">Operatif Ol</button>
+                                <button class="btn btn-secondary btn-small" onclick="addBot('BLUE', 'SPYMASTER')">🤖 Bot Casusbaşı</button>
+                                <button class="btn btn-secondary btn-small" onclick="addBot('BLUE', 'OPERATIVE')">🤖 Bot Operatif</button>
+                            </div>
+                        </div>
+                        <div id="blue-spymasters-below" class="team-players-below"></div>
+                    </div>
+                </div>
+                <div class="start-game-section">
+                    <p id="ready-status"></p>
+                    <div class="start-game-controls">
+                            <button id="bot-management-btn" class="btn btn-secondary btn-medium" onclick="toggleBotManagement()">🤖 Botları Yönet</button>
+                            <button id="random-teams-btn" class="btn btn-secondary btn-medium" onclick="randomizeTeams()">🎲 Takımları Karıştır</button>
+                            <button id="toggle-power-cards-btn" class="btn btn-secondary btn-medium hidden" onclick="togglePowerCards()">🃏 Power Cards: AÇIK</button>
+                            <label id="draft-picks-setting" class="draft-picks-setting hidden" title="Her takım kaç power card alacak?">
+                                🧩 Draft / Takım:
+                                <select id="draft-picks-per-team">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4" selected>4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </label>
+                        <button class="btn btn-success btn-large" id="start-game-btn" onclick="startGame()" disabled>OYUNU BAŞLAT</button>
+                    </div>
+
+                    <div id="draft-panel" class="draft-panel hidden" aria-hidden="true">
+                        <div class="draft-header">
+                            <div>
+                                <div class="draft-title">🧩 Pick &amp; Ban (Power Cards)</div>
+                                <div class="draft-subtitle">Önce her takım 1 kart banlar, sonra herkes 1 kart pickler.</div>
+                            </div>
+                            <div class="draft-actions">
+                                <button id="draft-start-btn" class="btn btn-secondary btn-small" onclick="startDraft()">Draft Başlat</button>
+                                <button id="draft-reset-btn" class="btn btn-secondary btn-small" onclick="resetDraft()">Sıfırla</button>
+                            </div>
+                        </div>
+                        <div id="draft-status" class="draft-status"></div>
+                        <div id="draft-cards" class="draft-cards"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Oyun Aşaması -->
+            <div id="game-phase" class="phase hidden">
+                <div class="game-layout">
+                    <!-- SOL: Kırmızı takım (orta çerçevenin DIŞINDA) -->
+                    <aside class="game-side game-side-left">
+                        <div class="team-group">
+                            <div id="red-operatives-above" class="team-players-above"></div>
+                            <div class="team-operatives-top" id="red-team-operatives"></div>
+                            <div class="team-score red">
+                                <span class="score-label">Kırmızı</span>
+                                <span class="score-value" id="red-score">9</span>
+                            </div>
+                            <div class="team-spymaster-bottom" id="red-team-spymaster">Casusbaşı: <span class="spymaster-name">-</span></div>
+                            <div id="red-spymasters-below" class="team-players-below"></div>
+                        </div>
+                    </aside>
+
+                    <!-- ORTA: Oyun ana alanı -->
+                    <main class="game-main">
+                        <!-- Oyun Durumu (sadece orta bilgi çerçevesi) -->
+                        <div class="game-status">
+                            <div class="score-board">
+                                <div class="turn-indicator">
+                                    <div id="turn-info">Sıra: KIRMIZI TAKIM</div>
+                                    <div id="clue-info"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                <!-- Casusbaşı İpucu Paneli -->
+                <div id="spymaster-panel" class="spymaster-panel hidden">
+                    <h3>🎯 Casusbaşı İpucu Ver</h3>
+                    <div class="clue-input-group">
+                        <input type="text" id="clue-word" placeholder="İpucu kelimesi" maxlength="20">
+                        <input type="number" id="clue-number" placeholder="Sayı" min="0" max="9" value="1">
+                        <button class="btn btn-primary" onclick="giveClue()">İpucu Ver</button>
+                    </div>
+                    <p class="hint">İpucunuz kendi takımınızın kelimelerine işaret etmeli!</p>
+                </div>
+
+                <!-- Oyun Tahtası -->
+                <div id="game-board" class="game-board">
+                    <!-- Kartlar buraya eklenecek -->
+                </div>
+
+                <!-- Reaction popups appear here -->
+                <div id="reaction-popups" class="reaction-popups"></div>
+
+                <!-- Takım Üyeleri -->
+                <div id="game-team-list" class="game-team-list">
+                    <div class="team-list-item">
+                        <h4>🔴 Kırmızı Takım:</h4>
+                        <div id="game-red-members"></div>
+                    </div>
+                    <div class="team-list-item">
+                        <h4>🔵 Mavi Takım:</h4>
+                        <div id="game-blue-members"></div>
+                    </div>
+                </div>
+
+                <!-- Operatif Kontrolleri -->
+                <div id="operative-controls" class="operative-controls hidden">
+                    <button class="btn btn-warning" onclick="endTurn()">Turu Bitir</button>
+                    <p id="guesses-info"></p>
+                </div>
+
+                <!-- Chat -->
+                <div id="game-chat-section" class="game-chat-section">
+                    <div class="chat-header">
+                        <div>
+                            <div class="chat-title">Takım Sohbeti</div>
+                            <div class="chat-subtitle">/p ile takım içi mesaj</div>
+                        </div>
+                        <div style="display:flex; gap:8px; align-items:center;">
+                            <button class="icon-btn" onclick="toggleGifPanel()" title="GIF">GIF</button>
+                            <button class="icon-btn" onclick="toggleEmojiPicker()" title="Emoji">😀</button>
+                        </div>
+                    </div>
+
+                    <div id="gif-panel" class="gif-panel hidden" aria-hidden="true">
+                        <div class="gif-panel-row">
+                            <input type="text" id="gif-search-input" placeholder="Tenor GIF ara..." maxlength="60">
+                            <button class="btn btn-primary btn-small" onclick="searchTenorGifs()">Ara</button>
+                            <button class="btn btn-secondary btn-small" onclick="closeGifPanel()">Kapat</button>
+                        </div>
+                        <div id="gif-results" class="gif-results"></div>
+                        <div class="gif-hint">GIF göndermek için bir GIF'e tıkla.</div>
+                    </div>
+
+                    <div id="game-chat-messages" class="game-chat-messages"></div>
+                    <div class="game-chat-input">
+                        <input type="text" id="game-chat-input" placeholder="Mesaj yazın (/p takım mesajı için)" maxlength="200">
+                        <button class="btn btn-primary btn-small" onclick="sendGameMessage()">Gönder</button>
+                    </div>
+                    <div id="emoji-picker" class="emoji-picker hidden">
+                        <span onclick="insertEmoji('😀')">😀</span>
+                        <span onclick="insertEmoji('😂')">😂</span>
+                        <span onclick="insertEmoji('❤️')">❤️</span>
+                        <span onclick="insertEmoji('👍')">👍</span>
+                        <span onclick="insertEmoji('🔥')">🔥</span>
+                        <span onclick="insertEmoji('🎉')">🎉</span>
+                        <span onclick="insertEmoji('😎')">😎</span>
+                        <span onclick="insertEmoji('🤔')">🤔</span>
+                        <span onclick="insertEmoji('😢')">😢</span>
+                        <span onclick="insertEmoji('👏')">👏</span>
+                    </div>
+                </div>
+
+                <!-- Power Card System (chat altı, sağa hizalı) -->
+                <div id="power-cards-section" class="power-cards-section hidden">
+                    <button class="power-cards-toggle btn btn-secondary" onclick="togglePowerCardMenu()">⚡ Güç Kartları</button>
+                    <div id="power-card-menu" class="power-card-menu hidden">
+                        <div class="power-card-header">
+                            <h3>⚡ Güç Kartlarım</h3>
+                            <button class="close-btn" onclick="closePowerCardMenu()">✕</button>
+                        </div>
+                        <div id="power-card-list" class="power-card-list">
+                            <!-- Power cards will be populated here -->
+                        </div>
+                        <div class="power-card-info" id="power-card-info" style="display: none;">
+                            <p id="power-card-description"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DenemeChat (popup chat - removable experimental feature) -->
+                <button id="denemechat-toggle" class="icon-btn denemechat-toggle" onclick="toggleDenemeChat()" title="DenemeChat">💬</button>
+                <div id="denemechat" class="denemechat-panel hidden" aria-hidden="true">
+                    <div class="denemechat-header">
+                        <div class="denemechat-title">DenemeChat</div>
+                        <button class="icon-btn" onclick="toggleDenemeChat()" title="Kapat">✕</button>
+                    </div>
+                    <div class="denemechat-recipients" id="denemechat-recipients" aria-label="Özel mesaj alıcıları">
+                        <!-- Filled by JS: room player nicknames -->
+                    </div>
+                    <div id="denemechat-messages" class="denemechat-messages"></div>
+                    <div class="denemechat-input">
+                        <input type="text" id="denemechat-input" placeholder="Mesaj yazın (/p takım mesajı için)" maxlength="200">
+                        <button class="btn btn-primary btn-small" onclick="sendDenemeChatMessage()">Gönder</button>
+                    </div>
+                </div>
+
+                <!-- Oyun Bitti Paneli -->
+                <div id="game-over" class="game-over hidden">
+                    <div class="game-over-content">
+                        <h2 id="winner-text"></h2>
+                        <button class="btn btn-success btn-large" onclick="restartGame()">Yeni Oyun (Aynı Oda)</button>
+                        <button class="btn btn-secondary" onclick="backToTeamSelection()">Takım Seçimine Dön</button>
+                        <button class="btn btn-primary" onclick="returnToLobby()">Lobiye Dön</button>
+                    </div>
+                </div>
+                    </main>
+
+                    <!-- SAĞ: Mavi takım (orta çerçevenin DIŞINDA) -->
+                    <aside class="game-side game-side-right">
+                        <div class="team-group">
+                            <div id="blue-operatives-above" class="team-players-above"></div>
+                            <div class="team-operatives-top" id="blue-team-operatives"></div>
+                            <div class="team-score blue">
+                                <span class="score-label">Mavi</span>
+                                <span class="score-value" id="blue-score">8</span>
+                            </div>
+                            <div class="team-spymaster-bottom" id="blue-team-spymaster">Casusbaşı: <span class="spymaster-name">-</span></div>
+                            <div id="blue-spymasters-below" class="team-players-below"></div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+
+            <!-- In-game Draft Overlay (Vote + Dice) -->
+            <div id="draft-overlay" class="draft-overlay hidden" aria-hidden="true">
+                <div class="draft-overlay-backdrop"></div>
+                <div class="draft-overlay-content">
+                    <div class="draft-panel" role="dialog" aria-label="Power Card Draft">
+                        <div class="draft-header">
+                            <div>
+                                <div class="draft-title">🎲 Takım Draft (Oy + Zar)</div>
+                                <div class="draft-subtitle">Takım içinde oy verin. İki takım zar atar; yüksek atan takım kendi takımında en çok oy alan kartı alır.</div>
+                            </div>
+                            <div class="draft-actions">
+                                <button id="draft-roll-btn" class="btn btn-secondary btn-small" onclick="spinDraft()">Çevir</button>
+                            </div>
+                        </div>
+                        <div id="draft-overlay-status" class="draft-status"></div>
+                        <div id="draft-reel" class="draft-reel hidden" aria-hidden="true"></div>
+                        <div id="draft-overlay-cards" class="draft-cards"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Global slash-command FX overlay (rain/lightning/water) -->
+    <div id="fx-overlay" class="fx-overlay" aria-hidden="true"></div>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
