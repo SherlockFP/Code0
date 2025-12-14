@@ -549,25 +549,29 @@ body.animations-disabled * {
 .rooms-section {
     flex: 1;
     min-height: 0;
-    max-height: 45vh;
+    max-height: 38vh;
 }
 
 .create-room-section {
     min-height: auto;
+    max-height: 70vh;
+    overflow-y: auto;
+    flex-shrink: 0;
 }
 
 .join-by-code-inline {
-    margin-top: 20px;
-    padding: 14px;
+    margin-top: 1.5vh;
+    padding: 1vh 1vw;
     background: linear-gradient(145deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
     border: 2px solid rgba(102, 126, 234, 0.2);
-    border-radius: 12px;
+    border-radius: 10px;
+    flex-shrink: 0;
 }
 
 .join-by-code-inline h3 {
-    font-size: 1.1em;
+    font-size: 1em;
     font-weight: 800;
-    margin: 0 0 12px 0;
+    margin: 0 0 1vh 0;
     color: #1e293b;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -588,7 +592,7 @@ body.animations-disabled * {
 }
 
 #rooms-list {
-    max-height: 35vh;
+    max-height: 28vh;
     overflow-y: auto;
     padding: 0.5vh;
     display: grid;
@@ -1200,7 +1204,7 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 /* Lobby main grid - horizontal layout with left and right sections */
 .lobby-main-grid {
     display: grid;
-    grid-template-columns: 1fr 32vw 22vw;
+    grid-template-columns: 1fr 38vw 20vw;
     gap: 1vw;
     align-items: start;
     flex: 1;
@@ -1245,7 +1249,7 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     flex-direction: column;
     will-change: transform;
     transform: translateZ(0);
-    height: 30vh;
+    height: 28vh;
     flex-shrink: 0;
 }
 
