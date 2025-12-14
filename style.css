@@ -1186,8 +1186,8 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 
 .lobby-content-wrapper {
     flex: 1;
-    max-width: 1000px;
-    padding: 24px;
+    max-width: 1300px;
+    padding: 20px;
     overflow-y: auto;
     margin: 0 auto;
 }
@@ -1340,9 +1340,9 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     position: relative;
     will-change: transform;
     transform: translateZ(0);
-    flex: 1;
     display: flex;
     flex-direction: column;
+    max-height: 400px;
 }
 
 .changelog-section::before {
@@ -2310,12 +2310,16 @@ h2 {
     display: flex;
     align-items: center;
     gap: 12px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(248, 250, 252, 0.6));
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(102, 126, 234, 0.2);
 }
 
 .welcome-text {
     font-size: 0.9rem;
-    color: #334155;
-    font-weight: 500;
+    color: #1e293b;
+    font-weight: 600;
 }
 
 .user-bar strong {
@@ -7072,14 +7076,13 @@ h1 {
 }
 
 .dark-mode .user-bar {
-    background: linear-gradient(145deg, rgba(51, 65, 85, 0.85), rgba(30, 41, 59, 0.75));
-    border-color: rgba(100, 116, 139, 0.5);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(145deg, rgba(51, 65, 85, 0.8), rgba(30, 41, 59, 0.7));
+    border-color: rgba(100, 116, 139, 0.4);
 }
 
 .dark-mode .welcome-text {
-    color: #e5e7eb;
-    font-weight: 500;
+    color: #f1f5f9;
+    font-weight: 600;
 }
 
 .dark-mode .join-by-code-inline {
