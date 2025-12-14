@@ -568,8 +568,8 @@ body.animations-disabled * {
 }
 
 .create-room-section {
-    min-height: 28vh;
-    max-height: 63vh;
+    min-height: 35vh;
+    max-height: 70vh;
     overflow-y: auto;
     flex-shrink: 0;
 }
@@ -1281,7 +1281,7 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     display: flex;
     flex-direction: column;
     transform: translateZ(0);
-    height: 28vh;
+    height: 35vh;
     flex-shrink: 0;
 }
 
