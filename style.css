@@ -1200,7 +1200,7 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 /* Lobby main grid - horizontal layout with left and right sections */
 .lobby-main-grid {
     display: grid;
-    grid-template-columns: 1fr 35vw;
+    grid-template-columns: 1fr 32vw 22vw;
     gap: 1vw;
     align-items: start;
     flex: 1;
@@ -1224,6 +1224,12 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     gap: 1vh;
     overflow-y: auto;
     max-height: 100%;
+}
+
+.changelog-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 /* Global Chat Section */
@@ -1355,8 +1361,8 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     transform: translateZ(0);
     display: flex;
     flex-direction: column;
-    max-height: 35vh;
-    flex-shrink: 0;
+    height: 100%;
+    overflow: hidden;
 }
 
 .changelog-section::before {
