@@ -144,6 +144,22 @@ body.power-save .reaction-buttons button:hover {
     transform: none !important;
 }
 
+/* Power-save should not ruin the top menu: keep it feeling like normal mode */
+body.power-save .top-bar .btn,
+body.power-save .top-bar .icon-btn,
+body.power-save .top-bar .dark-mode-toggle,
+body.power-save .top-bar .power-save-toggle {
+    transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease, opacity 160ms ease !important;
+}
+
+body.power-save .top-bar .btn:hover,
+body.power-save .top-bar .icon-btn:hover,
+body.power-save .top-bar .dark-mode-toggle:hover,
+body.power-save .top-bar .power-save-toggle:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.10) !important;
+}
+
 body.power-save::before {
     /* Keep the look, stop the animation (cheaper than hiding the layer) */
     animation: none !important;
