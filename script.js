@@ -3023,17 +3023,8 @@ function sendGameMessage() {
         return;
     }
 
-    // Check if message is a GIF
-    let messageToSend = actualMessage;
-    let gifUrl = null;
-    if (actualMessage.startsWith('[GIF] ')) {
-        gifUrl = actualMessage.substring(6).trim();
-        messageToSend = 'GIF gönderdi';
-    }
-
     socket.emit('send-message', {
-        message: messageToSend,
-        gifUrl: gifUrl,
+        message: actualMessage,
         isTeamMessage: isTeamMessage
     });
 
@@ -3208,80 +3199,12 @@ function restartGame() {
 
 function toggleEmojiPicker() {
     const picker = document.getElementById('emoji-picker');
-    const gifPicker = document.getElementById('gif-picker');
     if (!picker) return;
-    
-    // Close GIF picker if open
-    if (gifPicker && !gifPicker.classList.contains('hidden')) {
-        gifPicker.classList.add('hidden');
-    }
     
     picker.classList.toggle('hidden');
 }
 
-function toggleGifPicker() {
-    const picker = document.getElementById('gif-picker');
-    const emojiPicker = document.getElementById('emoji-picker');
-    if (!picker) return;
-    
-    // Close emoji picker if open
-    if (emojiPicker && !emojiPicker.classList.contains('hidden')) {
-        emojiPicker.classList.add('hidden');
-    }
-    
-    picker.classList.toggle('hidden');
-    if (!picker.classList.contains('hidden')) {
-        const input = document.getElementById('gif-search-input');
-        if (input) input.focus();
-    }
-}
 
-function searchGifs() {
-    const input = document.getElementById('gif-search-input');
-    const results = document.getElementById('gif-results');
-    if (!input || !results) return;
-    
-    const query = input.value.trim();
-    if (!query) return;
-    
-    results.innerHTML = '<div>Aranıyor...</div>';
-    
-    // Using Giphy API with public key
-    const apiKey = 'GlVGYHkr3WSBnllca02FUtcSNwX3SFgH'; // Public demo key
-    const url = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${encodeURIComponent(query)}&limit=12&rating=g`;
-    
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            results.innerHTML = '';
-            if (data.data && data.data.length > 0) {
-                data.data.forEach(gif => {
-                    const gifItem = document.createElement('div');
-                    gifItem.className = 'gif-item';
-                    gifItem.innerHTML = `<img src="${gif.images.fixed_height_small.url}" alt="${gif.title}" loading="lazy">`;
-                    gifItem.onclick = () => insertGif(gif.images.original.url);
-                    results.appendChild(gifItem);
-                });
-            } else {
-                results.innerHTML = '<div>GIF bulunamadı</div>';
-            }
-        })
-        .catch(error => {
-            console.error('GIF search error:', error);
-            results.innerHTML = '<div>Arama başarısız</div>';
-        });
-}
-
-function insertGif(gifUrl) {
-    const input = document.getElementById('game-chat-input');
-    const picker = document.getElementById('gif-picker');
-    
-    if (input && gifUrl) {
-        input.value = `[GIF] ${gifUrl}`;
-        if (picker) picker.classList.add('hidden');
-        input.focus();
-    }
-}
 
 function toggleGifPanel() {
     const panel = document.getElementById('gif-panel');
@@ -3374,6 +3297,38 @@ function sendGifMessage(url) {
         isTeamMessage
     });
     closeGifPanel();
+}
+
+function toggleChat() {
+    const chatSection = document.querySelector('.game-chat-section');
+    const chatContent = document.querySelector('.game-chat-section .chat-header + *');
+    const toggleBtn = document.getElementById('chat-toggle-btn');
+    
+    if (!chatSection || !chatContent || !toggleBtn) return;
+    
+    const isHidden = chatContent.style.display === 'none';
+    
+    if (isHidden) {
+        // Show chat
+        chatContent.style.display = '';
+        const allChatElements = chatSection.querySelectorAll('.game-chat-messages, .game-chat-input, .emoji-picker');
+        allChatElements.forEach(el => {
+            if (el) el.style.display = '';
+        });
+        toggleBtn.innerHTML = '👁️';
+        toggleBtn.title = 'Chat\'i Gizle';
+        chatSection.style.minHeight = '';
+    } else {
+        // Hide chat
+        chatContent.style.display = 'none';
+        const allChatElements = chatSection.querySelectorAll('.game-chat-messages, .game-chat-input, .emoji-picker');
+        allChatElements.forEach(el => {
+            if (el) el.style.display = 'none';
+        });
+        toggleBtn.innerHTML = '💬';
+        toggleBtn.title = 'Chat\'i Göster';
+        chatSection.style.minHeight = '60px';
+    }
 }
 
 // index.html uses insertEmoji(...) from the emoji picker under the in-game chat
@@ -3485,16 +3440,7 @@ function sendEmojiReaction(emoji) {
     if (picker) picker.classList.add('hidden');
 }
 
-// GIF URL safety check
-function isSafeGifUrl(url) {
-    if (!url || typeof url !== 'string') return false;
-    try {
-        const urlObj = new URL(url);
-        return urlObj.hostname.includes('giphy.com') || urlObj.hostname.includes('tenor.com');
-    } catch {
-        return false;
-    }
-}
+
 
 // Socket chat event
 socket.on('message', (data) => {
@@ -3535,16 +3481,7 @@ socket.on('message', (data) => {
 
     const body = messageElement.querySelector('.msg-body');
     if (body) {
-        if (gifUrl) {
-            const img = document.createElement('img');
-            img.className = 'chat-gif';
-            img.loading = 'lazy';
-            img.src = gifUrl;
-            img.alt = 'gif';
-            body.appendChild(img);
-        } else {
-            body.textContent = data.message || '';
-        }
+        body.textContent = data.message || '';
     }
 
     messagesContainer.appendChild(messageElement);
