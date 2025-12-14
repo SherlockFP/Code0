@@ -11,7 +11,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="dark-mode">
     <!-- Giriş Ekranı -->
     <div id="login-screen" class="screen">
         <div class="container">
@@ -179,11 +179,11 @@
                     </div>
 
                     <button id="close-lobby-btn" class="btn btn-small btn-danger hidden" onclick="closeLobby()">Lobiyi Kapat</button>
-                    <button id="dark-mode-toggle" class="dark-mode-toggle" onclick="toggleDarkMode()" title="Dark Mode Toggle">
+                    <button id="dark-mode-toggle" class="dark-mode-toggle dark-enabled" onclick="toggleDarkMode()" title="Dark Mode Toggle">
                         <span class="sun-icon">☀️</span>
                         <span class="moon-icon">🌙</span>
                     </button>
-                    <button id="power-save-toggle" class="power-save-toggle" onclick="togglePowerSaveMode()" title="Power Save Mode Toggle">
+                    <button id="power-save-toggle" class="power-save-toggle power-save-enabled" onclick="togglePowerSaveMode()" title="Power Save Mode Toggle">
                         <span class="power-icon">⚡</span>
                         <span class="save-icon">💤</span>
                     </button>

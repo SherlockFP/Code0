@@ -56,13 +56,22 @@ body::before{
 }
 
 body.dark-mode {
-    background: linear-gradient(180deg, #0f1419 0%, #1a1f2e 50%, #0f1419 100%);
+    background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 25%, #0f1824 50%, #1e2139 75%, #0a0e1a 100%);
+    background-size: 400% 400%;
+    animation: darkBgShift 60s ease infinite;
     color: #e5e7eb;
 }
 
+@keyframes darkBgShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 body.dark-mode::before {
-    opacity: 0.12;
-    filter: blur(20px) saturate(150%);
+    opacity: 0.15;
+    filter: blur(25px) saturate(180%);
+    background: linear-gradient(45deg,#1e40ff 0%, #8b5cf6 15%, #ec4899 30%, #6366f1 45%, #3b82f6 60%, #06b6d4 75%, #1e40ff 100%);
 }
 
 /* Power Save Mode */
@@ -294,19 +303,33 @@ body.animations-disabled * {
     background: rgba(255, 255, 255, 0.2);
 }
 
+.dark-mode #login-screen .container {
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(40px);
+    border: 2px solid rgba(100, 116, 139, 0.3);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.6), 
+                0 0 0 1px rgba(148, 163, 184, 0.2),
+                inset 0 1px 0 rgba(148, 163, 184, 0.15);
+}
+
+.dark-mode #login-screen .container::before {
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+}
+
 .dark-mode #login-screen h1 {
-    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #ec4899 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.3));
 }
 
 .dark-mode #login-screen .subtitle {
-    color: #9ca3af;
+    color: #cbd5e1;
 }
 
 .dark-mode #login-screen .feature-list li {
-    color: #d1d5db;
+    color: #e2e8f0;
 }
 
 .dark-mode .game-chat-message.team {
@@ -1198,6 +1221,37 @@ h2 {
     transform: translateY(-2px);
 }
 
+/* Dark Mode Input Styles */
+.dark-mode .input-group label {
+    color: #e2e8f0;
+}
+
+.dark-mode .input-group input, 
+.dark-mode .input-group select {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(100, 116, 139, 0.4);
+    color: #f1f5f9;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .input-group input::placeholder {
+    color: rgba(203, 213, 225, 0.5);
+}
+
+.dark-mode .input-group input:hover, 
+.dark-mode .input-group select:hover {
+    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.2);
+}
+
+.dark-mode .input-group input:focus, 
+.dark-mode .input-group select:focus {
+    background: rgba(30, 41, 59, 0.95);
+    border-color: #6366f1;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25),
+                0 8px 24px rgba(99, 102, 241, 0.3);
+}
+
 .btn {
     width: 100%;
     padding: 12px 24px;
@@ -1867,6 +1921,36 @@ h2 {
 .room-item p {
     color: var(--muted);
     font-size: 13px;
+}
+
+/* Dark Mode Lobby Styles */
+.dark-mode .rooms-section, 
+.dark-mode .create-room-section {
+    background: linear-gradient(145deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 0.7));
+    border: 2px solid rgba(100, 116, 139, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                inset 0 1px 0 rgba(148, 163, 184, 0.1);
+}
+
+.dark-mode .room-item {
+    background: linear-gradient(145deg, rgba(51, 65, 85, 0.9), rgba(30, 41, 59, 0.8));
+    border: 2px solid rgba(100, 116, 139, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .room-item:hover {
+    background: linear-gradient(145deg, rgba(71, 85, 105, 0.95), rgba(51, 65, 85, 0.9));
+    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: 0 16px 48px rgba(99, 102, 241, 0.3),
+                0 8px 24px rgba(99, 102, 241, 0.2);
+}
+
+.dark-mode .room-item h3 {
+    color: #f1f5f9;
+}
+
+.dark-mode .room-item p {
+    color: #cbd5e1;
 }
 
 .btn-refresh {
