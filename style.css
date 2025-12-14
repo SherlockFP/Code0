@@ -553,12 +553,11 @@ body.animations-disabled * {
     border: 2px solid rgba(102, 126, 234, 0.25);
     padding: 0.6vh 0.6vw;
     border-radius: 12px;
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(20px) saturate(170%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(8px);
     position: relative;
     display: flex;
     flex-direction: column;
-    will-change: transform;
     transform: translateZ(0);
 }
 
@@ -1273,12 +1272,11 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     border: 2px solid rgba(102, 126, 234, 0.25);
     padding: 0.6vh 0.6vw;
     border-radius: 12px;
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(20px) saturate(170%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(8px);
     position: relative;
     display: flex;
     flex-direction: column;
-    will-change: transform;
     transform: translateZ(0);
     height: 28vh;
     flex-shrink: 0;
@@ -1399,10 +1397,9 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     border: 2px solid rgba(102, 126, 234, 0.25);
     padding: 0.6vh 0.6vw;
     border-radius: 12px;
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(20px) saturate(170%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(8px);
     position: relative;
-    will-change: transform;
     transform: translateZ(0);
     display: flex;
     flex-direction: column;
