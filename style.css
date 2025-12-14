@@ -475,25 +475,60 @@ body.animations-disabled * {
 
 /* Make login screen and main container look more professional */
 #login-screen .container {
-    max-width: 800px;
-    min-height: 450px;
-    padding: 40px 60px;
+    max-width: 900px;
+    min-height: 500px;
+    padding: 60px 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 60px;
+    gap: 70px;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(30px);
+    border-radius: 32px;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45), 
+                0 0 0 1px rgba(255, 255, 255, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    position: relative;
+    overflow: hidden;
+    animation: loginFadeIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#login-screen .container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+@keyframes loginFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 #login-screen .login-left {
-    flex: 1;
+    flex: 1.2;
     text-align: left;
+    z-index: 1;
 }
 
 #login-screen .login-right {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 24px;
+    z-index: 1;
 }
 
 /* Professional Logo */
@@ -624,11 +659,88 @@ h1 { color: #12121a; text-shadow: 0 2px 8px rgba(0,0,0,0.08); }
 h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing: -1px; }
 .subtitle { color: var(--muted); }
 
-/* Buttons modernized */
-.btn { border-radius: 12px; padding: 12px 18px; transition: transform 160ms ease, box-shadow 160ms ease; }
-.btn-primary { background: linear-gradient(135deg,var(--accent),var(--accent-2)); color: white; box-shadow: 0 8px 30px rgba(102,126,234,0.18); }
-.btn-primary:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(102,126,234,0.22); }
-.btn-success { border-radius: 12px; }
+/* Buttons modernized - Professional */
+.btn { 
+    border-radius: 14px; 
+    padding: 14px 28px; 
+    transition: all 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-primary { 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+    color: white; 
+    box-shadow: 0 10px 35px rgba(102, 126, 234, 0.3),
+                0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.btn-primary:hover { 
+    transform: translateY(-3px) scale(1.02); 
+    box-shadow: 0 16px 48px rgba(102, 126, 234, 0.4),
+                0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.btn-success { 
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    box-shadow: 0 10px 35px rgba(16, 185, 129, 0.3);
+    border-radius: 14px; 
+}
+
+.btn-success:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 16px 48px rgba(16, 185, 129, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    color: white;
+    box-shadow: 0 8px 25px rgba(107, 114, 128, 0.25);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 14px 40px rgba(107, 114, 128, 0.35);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+}
+
+.btn-danger:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 14px 40px rgba(239, 68, 68, 0.4);
+}
 
 /* Top bar glass */
 .top-bar { 
@@ -1039,37 +1151,51 @@ h2 {
 }
 
 .input-group {
-    margin-bottom: 18px;
+    margin-bottom: 22px;
 }
 
 .input-group label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: #1f2937;
-    font-weight: 600;
-    font-size: 0.9em;
-    letter-spacing: 0.4px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.9;
 }
 
 .input-group input, .input-group select {
     width: 100%;
-    padding: 12px 16px;
-    border: 1px solid rgba(0,0,0,0.1);
-    border-radius: 10px;
-    font-size: 15px;
-    background: rgba(255,255,255,0.9);
+    padding: 16px 20px;
+    border: 2px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    font-size: 16px;
+    background: rgba(255,255,255,0.95);
     color: #1f2937;
-    transition: all 240ms ease;
-    backdrop-filter: blur(8px);
+    transition: all 280ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    backdrop-filter: blur(10px);
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.input-group input::placeholder { color: rgba(0,0,0,0.4); }
+.input-group input::placeholder { 
+    color: rgba(0,0,0,0.35);
+    font-weight: 400;
+}
+
+.input-group input:hover, .input-group select:hover {
+    border-color: rgba(102, 126, 234, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
 
 .input-group input:focus, .input-group select:focus {
     outline: none;
     border-color: var(--accent);
-    background: rgba(255,255,255,0.95);
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    background: rgba(255,255,255,1);
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15),
+                0 8px 24px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
 }
 
 .btn {
@@ -1127,22 +1253,25 @@ h2 {
 /* Enhanced card with golden text and hover effect */
 .card {
     position: relative;
-    border-radius: 14px;
-    padding: 16px 12px;
-    min-height: 96px;
+    border-radius: 16px;
+    padding: 20px 16px;
+    min-height: 110px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 800;
-    letter-spacing: 0.8px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(250,250,250,0.9));
-    border: 2px solid rgba(0,0,0,0.08);
-    transition: transform 240ms cubic-bezier(.2,.9,.2,1), box-shadow 240ms ease, background 240ms ease, color 240ms ease, border-color 240ms ease;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: linear-gradient(145deg, rgba(255,255,255,0.98), rgba(248,250,252,0.95));
+    border: 3px solid rgba(0,0,0,0.06);
+    transition: all 280ms cubic-bezier(0.34, 1.56, 0.64, 1);
     overflow: hidden;
     cursor: pointer;
     color: #1f2937;
-    font-size: 1.1rem;
-    backdrop-filter: blur(8px);
+    font-size: 1.15rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .card::after {
@@ -1160,12 +1289,17 @@ h2 {
 }
 
 .card:hover:not(.revealed) {
-    background: linear-gradient(135deg, rgba(255,249,220,0.95), rgba(255,244,200,0.98));
-    transform: translateY(-8px) scale(1.04);
-    box-shadow: 0 24px 60px rgba(217, 119, 0, 0.25), 0 0 30px rgba(255, 215, 0, 0.15);
-    color: #d4af37;
-    text-shadow: 0 0 12px rgba(255, 215, 0, 0.5), 0 2px 4px rgba(0,0,0,0.1);
-    border-color: rgba(217, 119, 0, 0.3);
+    background: linear-gradient(145deg, rgba(255,250,230,0.98), rgba(255,245,210,0.99));
+    transform: translateY(-10px) scale(1.06) rotateX(5deg);
+    box-shadow: 0 30px 70px rgba(217, 119, 0, 0.35), 
+                0 15px 35px rgba(255, 215, 0, 0.25),
+                inset 0 -2px 0 rgba(255, 255, 255, 0.5);
+    color: #d97706;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6), 
+                 0 3px 6px rgba(0,0,0,0.15),
+                 0 1px 3px rgba(255, 255, 255, 0.8);
+    border-color: rgba(217, 119, 0, 0.4);
+    filter: brightness(1.1);
 }
 
 .card.hover-selected:not(.revealed) {
@@ -1651,12 +1785,26 @@ h2 {
 }
 
 .rooms-section, .create-room-section {
-    background: linear-gradient(180deg, rgba(255,255,255,0.20), rgba(255,255,255,0.10));
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.16);
-    backdrop-filter: blur(6px) saturate(160%);
-    box-shadow: 0 14px 40px rgba(8,10,20,0.18);
+    background: linear-gradient(145deg, rgba(255,255,255,0.25), rgba(255,255,255,0.15));
+    padding: 28px;
+    border-radius: 20px;
+    border: 2px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: 0 20px 60px rgba(8,10,20,0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.rooms-section::before, .create-room-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    opacity: 0.7;
 }
 
 #rooms-list {
@@ -1672,20 +1820,41 @@ h2 {
 }
 
 .room-item {
-    background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
-    padding: 14px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    border-left: 3px solid var(--accent);
-    border: 1px solid rgba(255,255,255,0.4);
-    transition: all 240ms cubic-bezier(.2,.9,.2,1);
+    background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(248,250,252,0.9));
+    padding: 18px 20px;
+    border-radius: 14px;
+    margin-bottom: 14px;
+    border-left: 4px solid var(--accent);
+    border: 2px solid rgba(255,255,255,0.5);
+    transition: all 280ms cubic-bezier(0.34, 1.56, 0.64, 1);
     cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.room-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    transition: width 280ms ease;
+}
+
+.room-item:hover::before {
+    width: 100%;
+    opacity: 0.08;
 }
 
 .room-item:hover {
-    transform: translateX(4px) translateY(-2px);
-    box-shadow: 0 12px 32px rgba(102,126,234,0.15);
-    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+    transform: translateX(6px) translateY(-4px);
+    box-shadow: 0 16px 48px rgba(102,126,234,0.25),
+                0 8px 24px rgba(102,126,234,0.15);
+    background: linear-gradient(145deg, rgba(255,255,255,1), rgba(252,254,255,0.98));
+    border-color: rgba(102, 126, 234, 0.4);
 }
 
 .room-item h3 {
@@ -3712,27 +3881,50 @@ body.game-live .card:not(.revealed) {
     transform: scale(1.05);
 }
 
-/* Chat Toggle Button with Label */
+/* Chat Toggle Button with Label - Professional Design */
 .icon-btn-with-label {
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
+    gap: 8px;
+    padding: 10px 18px;
     font-size: 14px;
     border: none;
-    background: rgba(102, 126, 234, 0.15);
-    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.18));
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 280ms cubic-bezier(0.34, 1.56, 0.64, 1);
     color: #667eea;
-    font-weight: 500;
-    border: 1px solid rgba(102, 126, 234, 0.2);
+    font-weight: 600;
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.icon-btn-with-label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.icon-btn-with-label:hover::before {
+    left: 100%;
 }
 
 .icon-btn-with-label:hover {
-    background: rgba(102, 126, 234, 0.25);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.35), rgba(118, 75, 162, 0.3));
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    border-color: rgba(102, 126, 234, 0.5);
+}
+
+.icon-btn-with-label:active {
+    transform: translateY(-1px) scale(0.98);
 }
 
 .icon-btn-with-label .btn-icon {
@@ -5678,72 +5870,11 @@ h1 {
         text-align: center;
     }
     
-    .logo-container {
-        justify-content: center;
-    }
-    
-    .logo-icon {
-        font-size: 3rem;
-    }
-    
-    .logo-text {
-        font-size: 2.5rem;
-    }
-    
     #login-screen h1 {
         font-size: 2.5rem;
     }
     
-    #login-screen .description {
-        font-size: 0.85rem;
-        padding: 12px;
-    }
-    
     #login-screen .feature-list {
-        display: none;
-    }
-    
-    .lobby-logo {
-        justify-content: center;
-        flex-direction: column;
-        gap: 8px;
-    }
-    
-    .lobby-logo-icon {
-        font-size: 2.5rem;
-    }
-    
-    .lobby-logo h1 {
-        font-size: 1.8rem;
-        text-align: center;
-    }
-    
-    .user-bar {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-    }
-    
-    .room-info {
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-    }
-    
-    .room-logo {
-        font-size: 1.5rem;
-    }
-    
-    .room-info h2 {
-        font-size: 1.2rem;
-    }
-    
-    .room-meta {
-        flex-direction: column;
-        gap: 8px;
-    }
-    
-    .icon-btn-with-label .btn-label {
         display: none;
     }
     
