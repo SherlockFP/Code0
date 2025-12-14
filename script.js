@@ -1385,9 +1385,9 @@ document.addEventListener('DOMContentLoaded', () => {
 function login() {
     const usernameInput = document.getElementById('username');
     const username = usernameInput.value.trim();
-    let backgroundColor = document.getElementById('background-color').value;
     
-    // If no color selected, use rainbow (empty or default)
+    // Get background color from localStorage or use default
+    let backgroundColor = localStorage.getItem('backgroundColor');
     if (!backgroundColor) {
         backgroundColor = '#rainbow';
     }
@@ -1404,8 +1404,7 @@ function login() {
         return;
     }
 
-    // Save background color preference
-    localStorage.setItem('backgroundColor', backgroundColor);
+    // Apply current background color
     applyBackgroundColor(backgroundColor);
 
     console.log('Emitting login event with username:', username);
@@ -3167,20 +3166,29 @@ function resetClientRoomState() {
     window.__gameFinishedShown = false;
     window.__boardAnimatedIn = false;
 
-    if (currentRoom) {
-        currentRoom = null;
-    }
+    // Clear room data but keep connection
+    currentRoom = null;
+    
+    // Reset player state
     if (currentPlayer) {
         currentPlayer.team = null;
         currentPlayer.role = null;
+        currentPlayer.roomId = null;
     }
 
+    // Hide all game screens
     const gameOverElement = document.getElementById('game-over');
     if (gameOverElement) gameOverElement.classList.add('hidden');
     const gamePhaseElement = document.getElementById('game-phase');
     if (gamePhaseElement) gamePhaseElement.classList.add('hidden');
     const teamSelectionPhase = document.getElementById('team-selection-phase');
     if (teamSelectionPhase) teamSelectionPhase.classList.add('hidden');
+    
+    // Clear any active timers or intervals
+    if (window.__roomUpdateTimer) {
+        clearTimeout(window.__roomUpdateTimer);
+        window.__roomUpdateTimer = null;
+    }
 }
 
 function returnToLobby() {
