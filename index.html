@@ -352,6 +352,8 @@
                     <div class="game-chat-input">
                         <input type="text" id="game-chat-input" placeholder="Mesaj yazın (/p takım mesajı için)" maxlength="200">
                         <button class="btn btn-primary btn-small" onclick="sendGameMessage()">Gönder</button>
+                        <button class="btn btn-secondary btn-small" onclick="toggleEmojiPicker()">😀</button>
+                        <button class="btn btn-secondary btn-small" onclick="toggleGifPicker()">GIF</button>
                     </div>
                     <div id="emoji-picker" class="emoji-picker hidden">
                         <span onclick="insertEmoji('😀')">😀</span>
@@ -364,6 +366,11 @@
                         <span onclick="insertEmoji('🤔')">🤔</span>
                         <span onclick="insertEmoji('😢')">😢</span>
                         <span onclick="insertEmoji('👏')">👏</span>
+                    </div>
+                    <div id="gif-picker" class="gif-picker hidden">
+                        <input type="text" id="gif-search-input" placeholder="GIF ara..." maxlength="50">
+                        <button onclick="searchGifs()">Ara</button>
+                        <div id="gif-results"></div>
                     </div>
                 </div>
 
