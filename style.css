@@ -1234,9 +1234,9 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 /* Lobby main grid - horizontal layout with left and right sections */
 .lobby-main-grid {
     display: grid;
-    grid-template-columns: 1fr 28vw 18vw;
+    grid-template-columns: 1fr 1fr;
     gap: 0.6vw;
-    align-items: start;
+    align-items: stretch;
     flex: 1;
     min-height: 0;
     overflow: hidden;
