@@ -2287,7 +2287,6 @@ function updateTurnInfo(currentTurn) {
 
     // Reset classes and add specific color
     turnInfo.className = 'current-turn-badge';
-    turnInfo.style.backgroundColor = isRed ? '#fee2e2' : '#dbeafe';
     turnInfo.style.color = isRed ? '#dc2626' : '#2563eb';
     turnInfo.style.borderColor = isRed ? '#ef4444' : '#3b82f6';
 }
