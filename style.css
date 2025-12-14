@@ -582,7 +582,7 @@ body.animations-disabled * {
 
 .create-room-section {
     min-height: auto;
-    max-height: 58vh;
+    max-height: 56vh;
     overflow-y: auto;
     flex-shrink: 0;
 }
@@ -1369,18 +1369,19 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 
 .chat-input-container {
     display: flex;
-    gap: 8px;
+    gap: 6px;
 }
 
 .chat-input-container input {
     flex: 1;
-    padding: 10px 14px;
+    padding: 8px 12px;
     border: 2px solid rgba(102, 126, 234, 0.2);
     border-radius: 12px;
-    font-size: 14px;
+    font-size: 13px;
     background: rgba(255, 255, 255, 0.95);
     color: #1f2937;
     transition: all 280ms ease;
+    min-width: 0;
 }
 
 .chat-input-container input:focus {
@@ -1390,9 +1391,10 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 }
 
 .btn-send {
-    padding: 10px 20px;
+    padding: 8px 14px;
     white-space: nowrap;
-    font-size: 14px;
+    font-size: 13px;
+    flex-shrink: 0;
 }
 
 /* Changelog Section */
