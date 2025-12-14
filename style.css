@@ -2601,6 +2601,9 @@ h2 {
 
 .game-instructions {
     margin-top: 45px;
+    width: calc(100% - 16px);
+    margin-left: auto;
+    margin-right: auto;
     background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
     border: 1px solid rgba(255,255,255,0.15);
     border-radius: 16px;
