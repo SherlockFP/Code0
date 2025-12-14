@@ -570,7 +570,7 @@ body.animations-disabled * {
 
 .create-room-section {
     min-height: auto;
-    max-height: 57vh;
+    max-height: 28vh;
     overflow-y: auto;
     flex-shrink: 0;
 }
@@ -1379,7 +1379,7 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 }
 
 .btn-send {
-    padding: 8px 10px;
+    padding: 8px 6px;
     white-space: nowrap;
     font-size: 12px;
     flex-shrink: 0;
