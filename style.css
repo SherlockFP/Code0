@@ -2599,8 +2599,39 @@ h2 {
     color: #f1f5f9;
 }
 
-.dark-mode .room-item p {
-    color: #cbd5e1;
+.game-instructions {
+    margin-top: 20px;
+    padding: 15px;
+    background: linear-gradient(145deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #1f2937;
+}
+
+.game-instructions h3 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #1f2937;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.game-instructions ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.game-instructions li {
+    margin-bottom: 6px;
+    color: #374151;
+}
+
+.game-instructions li strong {
+    color: #1f2937;
+    font-weight: 600;
 }
 
 .btn-refresh {
