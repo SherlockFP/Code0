@@ -362,8 +362,10 @@ class SoundManager {
     }
 
     messageReceive() {
-        this.playTone(880, 0.06, 'sine', 0.10);
-        setTimeout(() => this.playTone(990, 0.08, 'sine', 0.10), 65);
+        // More noticeable notification sound for chat messages
+        this.playTone(523, 0.12, 'sine', 0.15); // C5
+        setTimeout(() => this.playTone(659, 0.12, 'sine', 0.15), 80); // E5
+        setTimeout(() => this.playTone(784, 0.15, 'sine', 0.18), 160); // G5
     }
 
     turnSwitch() {
