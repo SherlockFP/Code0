@@ -1153,15 +1153,18 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 
 /* Lobby menu layout - horizontal 3-column design */
 #lobby-screen {
-    display: grid;
-    grid-template-columns: 1fr 420px;
+    display: flex;
     height: 100vh;
     overflow: hidden;
+    justify-content: center;
 }
 
 .lobby-content-wrapper {
+    flex: 1;
+    max-width: 1600px;
     padding: 40px;
     overflow-y: auto;
+    margin: 0 auto;
 }
 
 /* Lobby main grid - horizontal layout with left and right sections */
@@ -1170,8 +1173,6 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     grid-template-columns: 1fr;
     gap: 24px;
     align-items: start;
-    max-width: 1600px;
-    margin: 0 auto;
 }
 
 .lobby-left-section {
@@ -1192,6 +1193,8 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     flex-direction: column;
     gap: 20px;
     padding: 40px 24px;
+    width: 420px;
+    flex-shrink: 0;
     background: linear-gradient(145deg, rgba(248, 250, 252, 0.95), rgba(241, 245, 249, 0.9));
     border-left: 2px solid rgba(102, 126, 234, 0.2);
     overflow-y: auto;
@@ -2173,9 +2176,6 @@ h2 {
 /* Lobi Ekranı */
 .lobby-header {
     margin-bottom: 30px;
-    max-width: 1600px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .lobby-logo {
@@ -4298,8 +4298,8 @@ body.game-live .card:not(.revealed) {
 }
 
 @media (max-width: 1400px) {
-    #lobby-screen {
-        grid-template-columns: 1fr 380px;
+    .lobby-right-section {
+        width: 380px;
     }
 
     .lobby-grid {
@@ -4313,12 +4313,17 @@ body.game-live .card:not(.revealed) {
 
 @media (max-width: 1200px) {
     #lobby-screen {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr auto;
+        flex-direction: column;
+    }
+
+    .lobby-content-wrapper {
+        max-width: 100%;
+        padding: 32px;
     }
 
     .lobby-right-section {
         flex-direction: row;
+        width: 100%;
         padding: 20px;
         border-left: none;
         border-top: 2px solid rgba(102, 126, 234, 0.2);
@@ -4385,6 +4390,10 @@ body.game-live .card:not(.revealed) {
         grid-template-columns: 1fr;
     }
     
+    .lobby-content-wrapper {
+        padding: 24px;
+    }
+
     .lobby-grid {
         grid-template-columns: 1fr;
     }
@@ -4394,6 +4403,17 @@ body.game-live .card:not(.revealed) {
     .join-by-code-section {
         grid-column: 1;
         grid-row: auto;
+    }
+
+    .lobby-right-section {
+        flex-direction: column;
+        max-height: 600px;
+    }
+
+    .global-chat-section,
+    .changelog-section {
+        height: auto;
+        max-height: 280px;
     }
     
     .game-board {
