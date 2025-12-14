@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-mode">
+    <!-- Background Music -->
+    <audio id="bg-music" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3" type="audio/mpeg">
+    </audio>
+
     <!-- Giriş Ekranı -->
     <div id="login-screen" class="screen">
         <div class="container">
@@ -50,7 +55,13 @@
                 </div>
                 <div class="user-bar">
                     <span class="welcome-text">Hoş geldin, <strong id="current-username"></strong></span>
-                    <button class="btn btn-small btn-secondary" onclick="logout()">Çıkış</button>
+                    <div class="header-buttons">
+                        <button id="music-toggle-lobby" class="music-toggle music-playing" onclick="toggleMusic()" title="Müzik Açık/Kapat">
+                            <span class="music-on-icon">🎵</span>
+                            <span class="music-off-icon">🔇</span>
+                        </button>
+                        <button class="btn btn-small btn-secondary" onclick="logout()">Çıkış</button>
+                    </div>
                 </div>
             </div>
 
@@ -210,6 +221,10 @@
                     </div>
 
                     <button id="close-lobby-btn" class="btn btn-small btn-danger hidden" onclick="closeLobby()">Lobiyi Kapat</button>
+                    <button id="music-toggle-game" class="music-toggle music-playing" onclick="toggleMusic()" title="Müzik Açık/Kapat">
+                        <span class="music-on-icon">🎵</span>
+                        <span class="music-off-icon">🔇</span>
+                    </button>
                     <button id="dark-mode-toggle" class="dark-mode-toggle dark-enabled" onclick="toggleDarkMode()" title="Dark Mode Toggle">
                         <span class="sun-icon">☀️</span>
                         <span class="moon-icon">🌙</span>

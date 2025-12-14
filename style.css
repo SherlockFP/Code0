@@ -1981,14 +1981,95 @@ h2 {
     transform: scale(1.1);
 }
 
-.power-save-toggle .power-save-icon {
+.power-save-toggle .power-icon,
+.power-save-toggle .save-icon {
+    position: absolute;
     font-size: 20px;
     transition: all 0.3s ease;
+}
+
+.power-save-toggle .power-icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.power-save-toggle .save-icon {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.power-save .power-save-toggle .power-icon {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.power-save .power-save-toggle .save-icon {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .power-save-enabled .power-save-toggle {
     background: rgba(255, 255, 255, 0.3);
     border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Music Toggle Button */
+.music-toggle {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(59, 130, 246, 0.2));
+    border: 2px solid rgba(16, 185, 129, 0.3);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.music-toggle:hover {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(59, 130, 246, 0.3));
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+}
+
+.music-toggle .music-on-icon,
+.music-toggle .music-off-icon {
+    position: absolute;
+    font-size: 22px;
+    transition: all 0.3s ease;
+}
+
+.music-toggle.music-playing .music-on-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.music-toggle.music-playing .music-off-icon {
+    opacity: 0;
+    transform: rotate(180deg) scale(0);
+}
+
+.music-toggle.music-paused .music-on-icon {
+    opacity: 0;
+    transform: rotate(-180deg) scale(0);
+}
+
+.music-toggle.music-paused .music-off-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+}
+
+.music-toggle.music-paused {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(249, 115, 22, 0.2));
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.music-toggle.music-paused:hover {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
 }
 
 /* Toggle Switch */
@@ -2222,6 +2303,12 @@ h2 {
 .user-bar strong {
     color: #667eea;
     font-weight: 600;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .lobby-grid {
@@ -6966,6 +7053,16 @@ h1 {
 
 .dark-mode .user-bar strong {
     color: #a5b4fc;
+}
+
+.dark-mode .music-toggle {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(59, 130, 246, 0.3));
+    border-color: rgba(16, 185, 129, 0.4);
+}
+
+.dark-mode .music-toggle.music-paused {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(249, 115, 22, 0.3));
+    border-color: rgba(239, 68, 68, 0.4);
 }
 
 .dark-mode #room-status {

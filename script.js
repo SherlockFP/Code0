@@ -3964,6 +3964,72 @@ function addBotFromMenu() {
     }
 }
 
+// Background Music Control
+let bgMusic = null;
+let isMusicPlaying = false;
+
+function initMusic() {
+    bgMusic = document.getElementById('bg-music');
+    const musicEnabled = localStorage.getItem('musicEnabled');
+    
+    if (musicEnabled === null || musicEnabled === 'true') {
+        // Auto-play music on first user interaction
+        document.addEventListener('click', function startMusic() {
+            if (!isMusicPlaying && bgMusic) {
+                bgMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    updateMusicButtons(true);
+                }).catch(err => console.log('Music autoplay prevented:', err));
+                document.removeEventListener('click', startMusic);
+            }
+        }, { once: true });
+    } else {
+        isMusicPlaying = false;
+        updateMusicButtons(false);
+    }
+}
+
+function toggleMusic() {
+    if (!bgMusic) {
+        bgMusic = document.getElementById('bg-music');
+    }
+    
+    if (isMusicPlaying) {
+        bgMusic.pause();
+        isMusicPlaying = false;
+        localStorage.setItem('musicEnabled', 'false');
+    } else {
+        bgMusic.play().then(() => {
+            isMusicPlaying = true;
+            localStorage.setItem('musicEnabled', 'true');
+        }).catch(err => console.log('Music play error:', err));
+    }
+    
+    updateMusicButtons(isMusicPlaying);
+}
+
+function updateMusicButtons(playing) {
+    const btns = [
+        document.getElementById('music-toggle-lobby'),
+        document.getElementById('music-toggle-game')
+    ];
+    
+    btns.forEach(btn => {
+        if (btn) {
+            if (playing) {
+                btn.classList.add('music-playing');
+                btn.classList.remove('music-paused');
+            } else {
+                btn.classList.remove('music-playing');
+                btn.classList.add('music-paused');
+            }
+        }
+    });
+}
+
+// Initialize music on page load
+window.addEventListener('DOMContentLoaded', initMusic);
+
 // Toggle dark mode
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
