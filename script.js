@@ -1,16 +1,19 @@
 // AGENT0 Game
 const socket = io();
 
-// Apply background color with transparency
+// Apply background color with transparency - realtime
 function applyBackgroundColor(color) {
     if (!color || color === '#rainbow') {
         // Show default rainbow background
         document.body.style.removeProperty('background-color');
+        localStorage.removeItem('backgroundColor');
         return;
     }
     // Convert hex to rgba with 30% opacity for glassmorphism compatibility
     const rgbaColor = hexToRgba(color, 0.3);
     document.body.style.setProperty('background-color', rgbaColor, 'important');
+    // Save to localStorage for persistence
+    localStorage.setItem('backgroundColor', color);
 }
 
 // Convert hex color to rgba
@@ -4025,18 +4028,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedBackgroundColor = localStorage.getItem('backgroundColor');
     if (savedBackgroundColor) {
         applyBackgroundColor(savedBackgroundColor);
-        const colorInput = document.getElementById('background-color');
-        if (colorInput) colorInput.value = savedBackgroundColor;
     }
 
-    // Add realtime background color change for game
+    // Set game background color input value
     const gameColorInput = document.getElementById('game-background-color');
     if (gameColorInput) {
-        gameColorInput.addEventListener('input', (e) => {
-            applyBackgroundColor(e.target.value);
-            localStorage.setItem('backgroundColor', e.target.value);
-        });
-        // Set current color
         const currentColor = localStorage.getItem('backgroundColor') || '#1e3a5f';
         gameColorInput.value = currentColor;
     }

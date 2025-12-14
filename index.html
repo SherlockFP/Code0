@@ -35,10 +35,6 @@
                     <label for="username">Kullanıcı Adınız</label>
                     <input type="text" id="username" placeholder="Bir kullanıcı adı girin" maxlength="15">
                 </div>
-                <div class="input-group">
-                    <label for="background-color">🎨 Arka Plan Rengi</label>
-                    <input type="color" id="background-color">
-                </div>
                 <button class="btn btn-primary" onclick="login()">Oyuna Başla</button>
             </div>
         </div>
@@ -160,7 +156,7 @@
                     </div>
                     <div class="background-controls">
                         <label for="game-background-color" title="Arka plan rengi">🎨</label>
-                        <input type="color" id="game-background-color" title="Arka plan rengini değiştir">
+                        <input type="color" id="game-background-color" oninput="applyBackgroundColor(this.value)" title="Arka plan rengini değiştir">
                         <button id="reset-background" class="icon-btn" onclick="resetBackground()" title="Varsayılan gökkuşağı arka planına dön">🌈</button>
                     </div>
 
