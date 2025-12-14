@@ -97,6 +97,24 @@ body.power-save .card.cursor-near::after {
     opacity: 0 !important;
 }
 
+body.power-save button:hover,
+body.power-save .btn:hover,
+body.power-save .btn-primary:hover,
+body.power-save .btn-success:hover,
+body.power-save .btn-secondary:hover,
+body.power-save .btn-danger:hover,
+body.power-save .btn-warning:hover,
+body.power-save .btn-team:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    background: inherit !important;
+}
+
+body.power-save .reaction-buttons button:hover {
+    background: inherit !important;
+    transform: none !important;
+}
+
 body.power-save::before {
     /* Disable animated background */
     display: none;
