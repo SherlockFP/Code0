@@ -67,12 +67,40 @@ body.dark-mode::before {
 
 /* Power Save Mode */
 body.power-save {
-    /* Reduce animations and effects */
+    /* Completely disable all visual effects */
     transition: none !important;
+    backdrop-filter: none !important;
 }
 
 body.power-save * {
     transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    backdrop-filter: none !important;
+}
+
+body.power-save *:hover {
+    transform: none !important;
+    box-shadow: none !important;
+    background: inherit !important;
+    backdrop-filter: none !important;
+}
+
+body.power-save *:hover::before,
+body.power-save *:hover::after {
+    display: none !important;
+    opacity: 0 !important;
+    animation: none !important;
+}
+
+body.power-save .card {
+    backdrop-filter: none !important;
+}
+
+body.power-save .card::before,
+body.power-save .card::after {
+    display: none !important;
+    opacity: 0 !important;
     animation: none !important;
 }
 
