@@ -562,15 +562,15 @@ body.animations-disabled * {
 }
 
 .rooms-section {
-    height: 320px;
+    height: 280px;
     flex-shrink: 0;
     overflow-y: auto;
 }
 
 .create-room-section {
-    height: 320px;
+    flex: 1;
+    min-height: 0;
     overflow-y: auto;
-    flex-shrink: 0;
 }
 
 .join-by-code-inline {
@@ -1280,7 +1280,7 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     display: flex;
     flex-direction: column;
     transform: translateZ(0);
-    height: 320px;
+    height: 280px;
     flex-shrink: 0;
 }
 
@@ -1616,15 +1616,15 @@ h2 {
 }
 
 .input-group {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .input-group label {
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
     color: #1f2937;
     font-weight: 700;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     opacity: 0.9;
@@ -1632,7 +1632,7 @@ h2 {
 
 .input-group input, .input-group select {
     width: 100%;
-    padding: 6px 10px;
+    padding: 8px 12px;
     border: 2px solid rgba(0,0,0,0.08);
     border-radius: 12px;
     font-size: 14px;
