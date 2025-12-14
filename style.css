@@ -562,9 +562,9 @@ body.animations-disabled * {
 }
 
 .rooms-section {
-    min-height: 0;
-    max-height: 25vh;
+    height: 320px;
     flex-shrink: 0;
+    overflow-y: auto;
 }
 
 .create-room-section {
@@ -1280,8 +1280,8 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     display: flex;
     flex-direction: column;
     transform: translateZ(0);
-    flex: 1;
-    min-height: 0;
+    height: 320px;
+    flex-shrink: 0;
 }
 
 .global-chat-section::before {
