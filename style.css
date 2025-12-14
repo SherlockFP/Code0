@@ -104,6 +104,25 @@ body.power-save .card::after {
     animation: none !important;
 }
 
+body.power-save .game-board::before,
+body.power-save .game-board::after,
+body.power-save .game-board.board-ripple::before,
+body.power-save .game-board.board-ripple::after {
+    display: none !important;
+    opacity: 0 !important;
+    animation: none !important;
+    filter: none !important;
+}
+
+body.power-save .bg-particle,
+body.power-save .bg-particle::before,
+body.power-save #pointer-glow {
+    display: none !important;
+    opacity: 0 !important;
+    animation: none !important;
+    filter: none !important;
+}
+
 body.power-save .card:hover:not(.revealed) {
     transform: none !important;
     box-shadow: none !important;

@@ -2267,6 +2267,11 @@ function setupBoardInteractions() {
     let lastHoverKey = null;
     let lastHoverAt = 0;
 
+    const effectsEnabled = () => {
+        // Power-save and animations-disabled should be fully “sadeless” and fast.
+        return !document.body.classList.contains('power-save') && !document.body.classList.contains('animations-disabled');
+    };
+
     const setCardMouseVars = (card, ev) => {
         try {
             const r = card.getBoundingClientRect();
@@ -2292,6 +2297,7 @@ function setupBoardInteractions() {
     };
 
     boardElement.addEventListener('mouseenter', () => {
+        if (!effectsEnabled()) return;
         boardElement.classList.add('board-ripple');
     }, { passive: true });
 
@@ -2299,16 +2305,31 @@ function setupBoardInteractions() {
         boardElement.classList.remove('board-ripple');
     }, { passive: true });
 
-    boardElement.addEventListener('mousemove', (e) => {
+    // Mouse-follow glow / hologram effects can be expensive on many PCs.
+    // Throttle to at most once per animation frame and disable entirely in power-save.
+    let pendingMoveEvent = null;
+    let moveRaf = 0;
+    const flushMove = () => {
+        moveRaf = 0;
+        const e = pendingMoveEvent;
+        pendingMoveEvent = null;
+        if (!e || !effectsEnabled()) return;
+
         setBoardMouseVars(boardElement, e);
-        const card = e.target.closest('.card');
+        const card = e.target && e.target.closest ? e.target.closest('.card') : null;
         if (!card) return;
         setCardMouseVars(card, e);
+    };
+
+    boardElement.addEventListener('mousemove', (e) => {
+        if (!effectsEnabled()) return;
+        pendingMoveEvent = e;
+        if (!moveRaf) moveRaf = window.requestAnimationFrame(flushMove);
     }, { passive: true });
 
     boardElement.addEventListener('mouseover', (e) => {
         // Make board fire/smoke react immediately on hover (even before any mousemove)
-        setBoardMouseVars(boardElement, e);
+        if (effectsEnabled()) setBoardMouseVars(boardElement, e);
 
         const card = e.target.closest('.card');
         if (!card) return;
