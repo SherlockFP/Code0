@@ -374,19 +374,9 @@
                             <div class="chat-subtitle">/p ile takım içi mesaj</div>
                         </div>
                         <div style="display:flex; gap:8px; align-items:center;">
-                            <button class="icon-btn" onclick="toggleGifPanel()" title="GIF">GIF</button>
+                            <button class="icon-btn" onclick="toggleChat()" id="chat-toggle-btn" title="Chat'i Gizle/Göster">👁️</button>
                             <button class="icon-btn" onclick="toggleEmojiPicker()" title="Emoji">😀</button>
                         </div>
-                    </div>
-
-                    <div id="gif-panel" class="gif-panel hidden" aria-hidden="true">
-                        <div class="gif-panel-row">
-                            <input type="text" id="gif-search-input" placeholder="Tenor GIF ara..." maxlength="60">
-                            <button class="btn btn-primary btn-small" onclick="searchTenorGifs()">Ara</button>
-                            <button class="btn btn-secondary btn-small" onclick="closeGifPanel()">Kapat</button>
-                        </div>
-                        <div id="gif-results" class="gif-results"></div>
-                        <div class="gif-hint">GIF göndermek için bir GIF'e tıkla.</div>
                     </div>
 
                     <div id="game-chat-messages" class="game-chat-messages"></div>
