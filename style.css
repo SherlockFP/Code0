@@ -5942,9 +5942,14 @@ h1 {
     #login-screen .container {
         flex-direction: column;
         max-width: 95%;
-        padding: 30px 20px;
-        gap: 30px;
+        padding: 35px 24px;
+        gap: 32px;
         min-height: auto;
+        border-radius: 24px;
+    }
+    
+    #login-screen .container::before {
+        display: none;
     }
     
     #login-screen .login-left {
@@ -5952,11 +5957,25 @@ h1 {
     }
     
     #login-screen h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
+        margin-bottom: 12px;
+    }
+    
+    #login-screen .subtitle {
+        font-size: 1.1rem;
     }
     
     #login-screen .feature-list {
         display: none;
+    }
+    
+    #login-screen .input-group {
+        margin-bottom: 18px;
+    }
+    
+    #login-screen .btn {
+        padding: 16px 24px;
+        font-size: 16px;
     }
     
     .container {
@@ -5966,14 +5985,27 @@ h1 {
     
     .game-board {
         grid-template-columns: repeat(5, 1fr);
-        gap: 5px;
+        gap: 8px;
         max-width: 100%;
+        padding: 16px;
+        border-radius: 16px;
+        margin: 12px auto;
+    }
+    
+    .game-board::before {
+        height: 2px;
     }
     
     .card {
-        min-height: 60px;
-        font-size: 12px;
-        padding: 5px;
+        min-height: 70px;
+        font-size: 0.7rem;
+        padding: 8px 4px;
+        border-radius: 10px;
+        border-width: 2px;
+    }
+    
+    .card:hover:not(.revealed) {
+        transform: translateY(-4px) scale(1.02);
     }
     
     .top-bar {
