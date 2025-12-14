@@ -1741,14 +1741,51 @@ h2 {
     backdrop-filter: blur(6px) saturate(160%);
 }
 
+.room-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.room-logo {
+    font-size: 2rem;
+    filter: drop-shadow(0 2px 8px rgba(102, 126, 234, 0.3));
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+.room-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
 .room-info h2 {
     color: inherit;
     margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.room-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 #room-status {
     color: #6b7280;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+#invite-code-display {
+    padding: 4px 10px;
+    background: rgba(102, 126, 234, 0.15);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #667eea;
+    border: 1px solid rgba(102, 126, 234, 0.2);
 }
 
 .top-actions {
@@ -5641,11 +5678,72 @@ h1 {
         text-align: center;
     }
     
+    .logo-container {
+        justify-content: center;
+    }
+    
+    .logo-icon {
+        font-size: 3rem;
+    }
+    
+    .logo-text {
+        font-size: 2.5rem;
+    }
+    
     #login-screen h1 {
         font-size: 2.5rem;
     }
     
+    #login-screen .description {
+        font-size: 0.85rem;
+        padding: 12px;
+    }
+    
     #login-screen .feature-list {
+        display: none;
+    }
+    
+    .lobby-logo {
+        justify-content: center;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .lobby-logo-icon {
+        font-size: 2.5rem;
+    }
+    
+    .lobby-logo h1 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    
+    .user-bar {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    
+    .room-info {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+    
+    .room-logo {
+        font-size: 1.5rem;
+    }
+    
+    .room-info h2 {
+        font-size: 1.2rem;
+    }
+    
+    .room-meta {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .icon-btn-with-label .btn-label {
         display: none;
     }
     
@@ -5831,4 +5929,14 @@ h1 {
 
 .dark-mode .user-bar strong {
     color: #a5b4fc;
+}
+
+.dark-mode #room-status {
+    color: #9ca3af;
+}
+
+.dark-mode #invite-code-display {
+    background: rgba(102, 126, 234, 0.25);
+    color: #a5b4fc;
+    border-color: rgba(102, 126, 234, 0.3);
 }
