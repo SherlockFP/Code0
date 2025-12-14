@@ -2343,10 +2343,9 @@ function updateTurnInfo(currentTurn) {
     const isRed = team === 'RED';
     turnInfo.textContent = `Sıra: ${isRed ? 'KIRMIZI' : 'MAVİ'} TAKIM`;
 
-    // Reset classes and add specific color
-    turnInfo.className = 'current-turn-badge';
-    turnInfo.style.color = isRed ? '#dc2626' : '#2563eb';
-    turnInfo.style.borderColor = isRed ? '#ef4444' : '#3b82f6';
+    // Add team-specific class for glow effect
+    turnInfo.className = '';
+    turnInfo.classList.add(isRed ? 'red-turn' : 'blue-turn');
 }
 
 // Setup board interactions (Simplified & Robust)
