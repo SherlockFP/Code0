@@ -317,31 +317,19 @@ body.animations-disabled * {
 }
 
 .dark-mode #turn-info {
-    background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.9));
-    border-color: rgba(100, 116, 139, 0.5);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(148, 163, 184, 0.1);
+    color: #e2e8f0;
 }
 
 .dark-mode #turn-info.red-turn {
     color: #f87171;
-    border-color: #ef4444;
-    box-shadow: 0 8px 32px rgba(239, 68, 68, 0.4),
-                0 0 50px rgba(248, 113, 113, 0.5),
-                inset 0 1px 0 rgba(148, 163, 184, 0.1);
-    text-shadow: 0 0 25px rgba(248, 113, 113, 0.8),
-                 0 0 50px rgba(239, 68, 68, 0.6),
-                 0 2px 8px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 10px rgba(248, 113, 113, 0.4),
+                 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .dark-mode #turn-info.blue-turn {
     color: #60a5fa;
-    border-color: #3b82f6;
-    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4),
-                0 0 50px rgba(96, 165, 250, 0.5),
-                inset 0 1px 0 rgba(148, 163, 184, 0.1);
-    text-shadow: 0 0 25px rgba(96, 165, 250, 0.8),
-                 0 0 50px rgba(59, 130, 246, 0.6),
-                 0 2px 8px rgba(0, 0, 0, 0.4);
+    text-shadow: 0 0 10px rgba(96, 165, 250, 0.4),
+                 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .dark-mode .spymaster-panel {
@@ -3728,53 +3716,25 @@ h2 {
 }
 
 #turn-info {
-    font-size: 2.6em;
+    font-size: 2.4em;
     font-weight: 900;
     color: #1e293b;
     margin-bottom: 14px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    padding: 20px 40px;
-    border-radius: 16px;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.9));
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    border: 3px solid rgba(102, 126, 234, 0.3);
-    transition: all 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
-    animation: turnPulse 2s ease-in-out infinite;
+    transition: all 400ms ease;
 }
 
 #turn-info.red-turn {
     color: #dc2626;
-    border-color: #ef4444;
-    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.3),
-                0 0 40px rgba(239, 68, 68, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    text-shadow: 0 0 20px rgba(220, 38, 38, 0.6),
-                 0 0 40px rgba(239, 68, 68, 0.4),
-                 0 2px 8px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 0 8px rgba(220, 38, 38, 0.3),
+                 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #turn-info.blue-turn {
     color: #2563eb;
-    border-color: #3b82f6;
-    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.3),
-                0 0 40px rgba(59, 130, 246, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-    text-shadow: 0 0 20px rgba(37, 99, 235, 0.6),
-                 0 0 40px rgba(59, 130, 246, 0.4),
-                 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-@keyframes turnPulse {
-    0%, 100% {
-        transform: scale(1) translateZ(0);
-        filter: brightness(1);
-    }
-    50% {
-        transform: scale(1.02) translateZ(0);
-        filter: brightness(1.1);
-    }
+    text-shadow: 0 0 8px rgba(37, 99, 235, 0.3),
+                 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #clue-info { min-height: 42px; }
