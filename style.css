@@ -1152,12 +1152,42 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 }
 
 /* Lobby menu layout - horizontal 3-column design */
+#lobby-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.lobby-header-wrapper {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 24px 40px;
+    border-bottom: 2px solid rgba(102, 126, 234, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.lobby-main-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 0;
+    overflow: hidden;
+}
+
+.lobby-content-wrapper {
+    padding: 24px;
+    overflow-y: auto;
+}
+
 /* Lobby main grid - horizontal layout with left and right sections */
 .lobby-main-grid {
     display: grid;
-    grid-template-columns: 1fr 400px;
+    grid-template-columns: 1fr;
     gap: 24px;
     align-items: start;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
 .lobby-left-section {
@@ -1176,7 +1206,12 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 .lobby-right-section {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
+    padding: 24px;
+    background: linear-gradient(145deg, rgba(248, 250, 252, 0.95), rgba(241, 245, 249, 0.9));
+    border-left: 2px solid rgba(102, 126, 234, 0.2);
+    overflow-y: auto;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
 }
 
 /* Global Chat Section */
@@ -1376,6 +1411,17 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
     color: #1e293b;
     font-size: 13px;
     line-height: 1.4;
+}
+
+/* Dark mode for lobby */
+.dark-mode .lobby-header-wrapper {
+    background: rgba(15, 23, 42, 0.95);
+    border-bottom-color: rgba(100, 116, 139, 0.3);
+}
+
+.dark-mode .lobby-right-section {
+    background: linear-gradient(145deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.9));
+    border-left-color: rgba(100, 116, 139, 0.3);
 }
 
 /* Dark mode for chat and changelog */
@@ -2147,7 +2193,8 @@ h2 {
 
 /* Lobi Ekranı */
 .lobby-header {
-    margin-bottom: 30px;
+    max-width: 1600px;
+    margin: 0 auto;
 }
 
 .lobby-logo {
@@ -2177,7 +2224,7 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.10));
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.6), rgba(248, 250, 252, 0.4));
     border: 1px solid rgba(255,255,255,0.16);
     backdrop-filter: blur(16px) saturate(160%);
     padding: 15px 20px;
@@ -4269,9 +4316,9 @@ body.game-live .card:not(.revealed) {
     }
 }
 
-@media (max-width: 1600px) {
-    .lobby-main-grid {
-        grid-template-columns: 1fr 350px;
+@media (max-width: 1400px) {
+    .lobby-main-container {
+        grid-template-columns: 1fr 380px;
     }
 
     .lobby-grid {
@@ -4281,35 +4328,35 @@ body.game-live .card:not(.revealed) {
     .rooms-section {
         grid-column: 1 / -1;
     }
-
-    .global-chat-section {
-        height: 300px;
-    }
-
-    .changelog-section {
-        max-height: 300px;
-    }
 }
 
-@media (max-width: 1400px) {
-    .lobby-main-grid {
+@media (max-width: 1200px) {
+    .lobby-main-container {
         grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
     }
 
     .lobby-right-section {
         flex-direction: row;
-        gap: 24px;
+        padding: 20px;
+        border-left: none;
+        border-top: 2px solid rgba(102, 126, 234, 0.2);
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
     }
 
     .global-chat-section,
     .changelog-section {
         flex: 1;
-        height: 340px;
-        max-height: 340px;
+        height: 320px;
+        max-height: 320px;
     }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
+    .lobby-header-wrapper {
+        padding: 20px 24px;
+    }
+
     .lobby-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -4324,17 +4371,16 @@ body.game-live .card:not(.revealed) {
     #rooms-list {
         max-height: 300px;
     }
-}
 
-@media (max-width: 900px) {
     .lobby-right-section {
         flex-direction: column;
+        gap: 16px;
     }
 
     .global-chat-section,
     .changelog-section {
-        height: 300px;
-        max-height: 300px;
+        height: 280px;
+        max-height: 280px;
     }
 }
 

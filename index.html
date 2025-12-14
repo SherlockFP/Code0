@@ -42,7 +42,7 @@
 
     <!-- Lobi Ekranı -->
     <div id="lobby-screen" class="screen hidden">
-        <div class="container wide floating">
+        <div class="lobby-header-wrapper">
             <div class="lobby-header">
                 <div class="lobby-logo">
                     <span class="lobby-logo-icon">🎯</span>
@@ -53,8 +53,11 @@
                     <button class="btn btn-small btn-secondary" onclick="logout()">Çıkış</button>
                 </div>
             </div>
+        </div>
 
-            <div class="lobby-main-grid">
+        <div class="lobby-main-container">
+            <div class="lobby-content-wrapper">
+                <div class="lobby-main-grid">
                 <div class="lobby-left-section">
                     <div class="lobby-grid">
                         <div class="rooms-section">
@@ -165,6 +168,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>
