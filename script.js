@@ -3307,6 +3307,8 @@ function toggleChat() {
     if (!chatSection || !chatContent || !toggleBtn) return;
     
     const isHidden = chatContent.style.display === 'none';
+    const btnIcon = toggleBtn.querySelector('.btn-icon');
+    const btnLabel = toggleBtn.querySelector('.btn-label');
     
     if (isHidden) {
         // Show chat
@@ -3315,7 +3317,8 @@ function toggleChat() {
         allChatElements.forEach(el => {
             if (el) el.style.display = '';
         });
-        toggleBtn.innerHTML = '👁️';
+        if (btnIcon) btnIcon.textContent = '👁️';
+        if (btnLabel) btnLabel.textContent = 'Chat\'i Gizle';
         toggleBtn.title = 'Chat\'i Gizle';
         chatSection.style.minHeight = '';
     } else {
@@ -3325,7 +3328,8 @@ function toggleChat() {
         allChatElements.forEach(el => {
             if (el) el.style.display = 'none';
         });
-        toggleBtn.innerHTML = '💬';
+        if (btnIcon) btnIcon.textContent = '💬';
+        if (btnLabel) btnLabel.textContent = 'Chat\'i Göster';
         toggleBtn.title = 'Chat\'i Göster';
         chatSection.style.minHeight = '60px';
     }

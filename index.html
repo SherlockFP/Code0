@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
-    <title>AGENT0 - Profesyonel Multiplayer</title>
+    <meta name="description" content="AGENT0 - Profesyonel multiplayer kelime oyunu. Takımınızla stratejik düşünün, ipuçları verin ve kazanın!">
+    <meta name="keywords" content="codenames, kelime oyunu, multiplayer, strateji, online oyun">
+    <meta name="theme-color" content="#6C63FF">
+    <title>AGENT0 - Profesyonel Multiplayer Kelime Oyunu</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,14 +16,18 @@
     <div id="login-screen" class="screen">
         <div class="container">
             <div class="login-left">
-                <h1>🎯 AGENT0</h1>
-                <p class="subtitle">Profesyonel Kelime Oyunu</p>
+                <div class="logo-container">
+                    <div class="logo-icon">🎯</div>
+                    <h1 class="logo-text">AGENT0</h1>
+                </div>
+                <p class="subtitle">Takım Tabanlı Strateji Oyunu</p>
+                <p class="description">İki takım halinde yarışın! Casusbaşınızın verdiği ipuçlarıyla doğru kelimeleri bulun ve rakiplerinizi geride bırakın.</p>
                 <ul class="feature-list">
-                    <li>Gerçek zamanlı multiplayer</li>
-                    <li>Akıllı takma isim sistemi</li>
-                    <li>Güçlü kart sistemi</li>
-                    <li>Kişiselleştirme seçenekleri</li>
-                    <li>Profesyonel oyun deneyimi</li>
+                    <li><span class="feature-icon">⚡</span> Gerçek zamanlı multiplayer</li>
+                    <li><span class="feature-icon">🎮</span> Güçlü kart sistemi</li>
+                    <li><span class="feature-icon">🎨</span> Kişiselleştirilebilir tema</li>
+                    <li><span class="feature-icon">🏆</span> Turnuva modu</li>
+                    <li><span class="feature-icon">💬</span> Takım içi sohbet</li>
                 </ul>
             </div>
             <div class="login-right">
@@ -39,10 +47,15 @@
     <!-- Lobi Ekranı -->
     <div id="lobby-screen" class="screen hidden">
         <div class="container wide floating">
-            <h1>🎯 AGENT0 LOBISI</h1>
-            <div class="user-bar">
-                <span>Hoş geldin, <strong id="current-username"></strong></span>
-                <button class="btn btn-small btn-secondary" onclick="logout()">Çıkış</button>
+            <div class="lobby-header">
+                <div class="lobby-logo">
+                    <span class="lobby-logo-icon">🎯</span>
+                    <h1>AGENT0 LOBISI</h1>
+                </div>
+                <div class="user-bar">
+                    <span class="welcome-text">Hoş geldin, <strong id="current-username"></strong></span>
+                    <button class="btn btn-small btn-secondary" onclick="logout()">Çıkış</button>
+                </div>
             </div>
 
             <div class="lobby-grid">
@@ -373,8 +386,11 @@
                             <div class="chat-title">Takım Sohbeti</div>
                             <div class="chat-subtitle">/p ile takım içi mesaj</div>
                         </div>
-                        <div style="display:flex; gap:8px; align-items:center;">
-                            <button class="icon-btn" onclick="toggleChat()" id="chat-toggle-btn" title="Chat'i Gizle/Göster">👁️</button>
+                        <div style="display:flex; gap:12px; align-items:center;">
+                            <button class="icon-btn-with-label" onclick="toggleChat()" id="chat-toggle-btn" title="Chat'i Gizle/Göster">
+                                <span class="btn-icon">👁️</span>
+                                <span class="btn-label">Chat'i Gizle</span>
+                            </button>
                             <button class="icon-btn" onclick="toggleEmojiPicker()" title="Emoji">😀</button>
                         </div>
                     </div>
