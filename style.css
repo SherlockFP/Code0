@@ -1379,9 +1379,16 @@ h1 { font-family: 'Poppins', Inter, sans-serif; font-weight: 700; letter-spacing
 }
 
 .btn-send {
-    padding: 8px 3px !important;
-    white-space: nowrap;
+    padding: 8px 3px;
     font-size: 12px;
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 200ms ease;
+    white-space: nowrap;
     flex-shrink: 0;
     min-width: fit-content;
 }
