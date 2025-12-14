@@ -2135,7 +2135,7 @@ function updateRoomState(room) {
                 botItem.className = 'bot-item';
                 botItem.innerHTML = `
                     <div class="bot-info">${bot.team === 'RED' ? '🔴' : '🔵'} ${bot.role === 'SPYMASTER' ? 'Casusbaşı' : 'Operatif'} Bot</div>
-                    ${isHost ? `<button class="remove-btn" onclick="removeBot('${bot.id}')">Kaldır</button>` : ''}
+                    ${isHost ? `<button class="remove-btn kick-btn" onclick="removeBot('${bot.id}')">🚫 Kick</button>` : ''}
                 `;
                 botList.appendChild(botItem);
             });
