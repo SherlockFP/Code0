@@ -3778,6 +3778,20 @@ function backToTeamSelection() {
         currentRoom.board = null;
         currentRoom.bombLocks = null;
         currentRoom.powerCardsEnabled = true; // Reset to default
+        
+        // Takımları sıfırla - oyuncuları takımsız yap
+        if (currentRoom.players && Array.isArray(currentRoom.players)) {
+            currentRoom.players.forEach(player => {
+                player.team = null;
+                player.role = null;
+            });
+        }
+        
+        // Mevcut oyuncunun takımını da sıfırla
+        if (currentPlayer) {
+            currentPlayer.team = null;
+            currentPlayer.role = null;
+        }
     }
 }
 
