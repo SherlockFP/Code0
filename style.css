@@ -4970,13 +4970,13 @@ h1 {
 }
 
 @keyframes slideUp {
-    0% { transform: translateY(20px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
+    0% { transform: translate(-50%, -50%) translateY(20px); opacity: 0; }
+    100% { transform: translate(-50%, -50%) translateY(0); opacity: 1; }
 }
 
 @keyframes slideDown {
-    0% { transform: translateY(-20px) translateX(-50%); opacity: 0; }
-    100% { transform: translateY(0) translateX(-50%); opacity: 1; }
+    0% { transform: translate(-50%, -50%) translateY(-20px); opacity: 0; }
+    100% { transform: translate(-50%, -50%) translateY(0); opacity: 1; }
 }
 
 .power-card-header {
