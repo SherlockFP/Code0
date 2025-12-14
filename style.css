@@ -2600,19 +2600,19 @@ h2 {
 }
 
 .game-instructions {
-    margin-top: 20px;
-    padding: 15px;
+    margin-top: 25px;
+    padding: 18px;
     background: linear-gradient(145deg, rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.08));
     border: 1px solid rgba(102, 126, 234, 0.3);
     border-radius: 10px;
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.6;
     color: #1f2937;
 }
 
 .game-instructions h3 {
-    margin: 0 0 10px 0;
-    font-size: 14px;
+    margin: 0 0 12px 0;
+    font-size: 15px;
     font-weight: 700;
     color: #1f2937;
     text-transform: uppercase;
@@ -2621,11 +2621,11 @@ h2 {
 
 .game-instructions ul {
     margin: 0;
-    padding-left: 18px;
+    padding-left: 20px;
 }
 
 .game-instructions li {
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     color: #374151;
 }
 
