@@ -4838,13 +4838,13 @@ body.game-live .card:not(.revealed) {
 
 @media (max-width: 600px) {
     .container {
-        max-width: 350px;
-        padding: 25px 20px;
-        margin: 10px;
+        max-width: 95%;
+        padding: 20px 16px;
+        margin: 8px;
     }
     
     .screen {
-        padding: 10px;
+        padding: 8px;
     }
     
     h1 {
@@ -4872,12 +4872,96 @@ body.game-live .card:not(.revealed) {
     .dark-mode-toggle .moon-icon {
         font-size: 18px;
     }
+    
+    /* Lobi mobile optimization */
+    .lobby-content-wrapper {
+        padding: 12px !important;
+    }
+    
+    .lobby-grid {
+        gap: 12px !important;
+    }
+    
+    .rooms-section,
+    .create-room-section,
+    .join-by-code-section {
+        padding: 16px !important;
+        border-radius: 16px !important;
+    }
+    
+    .input-group {
+        margin-bottom: 14px;
+    }
+    
+    .input-group input,
+    .input-group select {
+        padding: 14px 16px !important;
+        font-size: 16px !important;
+        border-radius: 14px !important;
+        min-height: 48px;
+    }
+    
+    .input-group label {
+        font-size: 14px;
+        margin-bottom: 8px;
+        font-weight: 600;
+    }
+    
+    .btn {
+        padding: 16px 24px !important;
+        font-size: 16px !important;
+        min-height: 52px;
+        border-radius: 14px !important;
+        font-weight: 700;
+    }
+    
+    .checkbox-row {
+        gap: 12px;
+        margin-bottom: 14px;
+    }
+    
+    .checkbox-item {
+        padding: 12px;
+        font-size: 15px;
+    }
+    
+    .room-item {
+        padding: 16px !important;
+        margin-bottom: 12px;
+    }
+    
+    .room-name {
+        font-size: 16px !important;
+    }
+    
+    .room-info {
+        font-size: 13px !important;
+    }
+    
+    h2 {
+        font-size: 1.4em !important;
+        margin-bottom: 12px;
+    }
+    
+    .game-instructions {
+        transform: scale(1) !important;
+        margin-top: 20px !important;
+        padding: 20px !important;
+    }
+    
+    .instructions-header h3 {
+        font-size: 16px !important;
+    }
+    
+    .step-text {
+        font-size: 14px !important;
+    }
 }
 
 @media (max-width: 400px) {
     .container {
-        max-width: 300px;
-        padding: 20px 15px;
+        max-width: 95%;
+        padding: 16px 12px;
     }
     
     .game-board {
@@ -4889,6 +4973,21 @@ body.game-live .card:not(.revealed) {
         padding: 10px;
         font-size: 0.75em;
         min-height: 60px;
+    }
+    
+    .lobby-content-wrapper {
+        padding: 10px !important;
+    }
+    
+    .input-group input,
+    .input-group select {
+        padding: 16px !important;
+        font-size: 16px !important;
+    }
+    
+    .btn {
+        padding: 18px 24px !important;
+        font-size: 16px !important;
     }
 }
 
