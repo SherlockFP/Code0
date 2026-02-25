@@ -1,5 +1,5 @@
 ﻿[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/SherlockFP/Code0)
-# ðŸŽ¯ AGENT0 - Profesyonel Multiplayer Kelime Oyunu
+# 🎯 AGENT0 - Profesyonel Multiplayer Kelime Oyunu
 
 <div align="center">
 
@@ -8,95 +8,95 @@
 [![Socket.IO](https://img.shields.io/badge/Socket.IO-4.7+-black?style=flat-square&logo=socket.io)](https://socket.io/)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
-**TakÄ±m tabanlÄ± strateji oyunu** â€¢ **GerÃ§ek zamanlÄ± multiplayer** â€¢ **GÃ¼Ã§lÃ¼ kart sistemi**
+**Takım tabanlı strateji oyunu** • **Gerçek zamanlı multiplayer** • **Güçlü kart sistemi**
 
-[ðŸŽ® Demo](https://agent0-game.example.com) â€¢ [ðŸ“– DokÃ¼mantasyon](#Ã¶zellikler) â€¢ [ðŸ› Sorun Bildir](https://github.com/SherlockFP/Code0/issues)
+[🎮 Demo](https://agent0-game.example.com) • [📖 Dokümantasyon](#özellikler) • [🐛 Sorun Bildir](https://github.com/SherlockFP/Code0/issues)
 
 </div>
 
 ---
 
-## ðŸ“‹ Ä°Ã§indekiler
+## 📋 İçindekiler
 
-- [HakkÄ±nda](#-hakkÄ±nda)
-- [Ã–zellikler](#-Ã¶zellikler)
+- [Hakkında](#-hakkında)
+- [Özellikler](#-özellikler)
 - [Kurulum](#-kurulum)
-- [KullanÄ±m](#-kullanÄ±m)
-- [OynanÄ±ÅŸ](#-oynanÄ±ÅŸ)
-- [KatkÄ±da Bulunma](#-katkÄ±da-bulunma)
+- [Kullanım](#-kullanım)
+- [Oynanış](#-oynanış)
+- [Katkıda Bulunma](#-katkıda-bulunma)
 - [Lisans](#-lisans)
 
 ---
 
-## ðŸŽ® HakkÄ±nda
+## 🎮 Hakkında
 
-**AGENT0**, klasik Codenames oyununun profesyonel bir multiplayer uyarlamasÄ±dÄ±r. Ä°ki takÄ±m halinde yarÄ±ÅŸÄ±n, casusbaÅŸÄ±nÄ±zÄ±n verdiÄŸi ipuÃ§larÄ±yla doÄŸru kelimeleri bulun ve rakiplerinizi geride bÄ±rakÄ±n!
+**AGENT0**, klasik Codenames oyununun profesyonel bir multiplayer uyarlamasıdır. İki takım halinde yarışın, casusbaşınızın verdiği ipuçlarıyla doğru kelimeleri bulun ve rakiplerinizi geride bırakın!
 
 ### Neden AGENT0?
 
-- âš¡ **GerÃ§ek ZamanlÄ±**: Socket.IO ile anlÄ±k senkronizasyon
-- ðŸŽ¨ **KiÅŸiselleÅŸtirilebilir**: Dark mode, tema renkleri, arka plan seÃ§enekleri
-- ðŸƒ **GÃ¼Ã§lÃ¼ Kart Sistemi**: 25+ farklÄ± power card ile strateji geliÅŸtirin
-- ðŸ† **Turnuva Modu**: RekabetÃ§i oyun deneyimi
-- ðŸ’¬ **TakÄ±m Ä°Ã§i Sohbet**: TakÄ±m arkadaÅŸlarÄ±nÄ±zla stratejik iletiÅŸim
-- ðŸ“± **Responsive**: Mobil ve masaÃ¼stÃ¼ uyumlu
+- ⚡ **Gerçek Zamanlı**: Socket.IO ile anlık senkronizasyon
+- 🎨 **Kişiselleştirilebilir**: Dark mode, tema renkleri, arka plan seçenekleri
+- 🃏 **Güçlü Kart Sistemi**: 25+ farklı power card ile strateji geliştirin
+- 🏆 **Turnuva Modu**: Rekabetçi oyun deneyimi
+- 💬 **Takım İçi Sohbet**: Takım arkadaşlarınızla stratejik iletişim
+- 📱 **Responsive**: Mobil ve masaüstü uyumlu
 
 ---
 
-## âœ¨ Ã–zellikler
+## ✨ Özellikler
 
-### Oyun ModlarÄ±
-- ðŸŽ¯ **Normal Mod**: Klasik Codenames deneyimi
-- ðŸ† **Tournament Mod**: Power card'lar kapalÄ±, rekabetÃ§i oyun
-- ðŸ§© **Draft Modu**: Pick & Ban sistemi ile takÄ±m stratejisi
+### Oyun Modları
+- 🎯 **Normal Mod**: Klasik Codenames deneyimi
+- 🏆 **Tournament Mod**: Power card'lar kapalı, rekabetçi oyun
+- 🧩 **Draft Modu**: Pick & Ban sistemi ile takım stratejisi
 
-### KiÅŸiselleÅŸtirme
-- ðŸŒ“ **Dark/Light Mode**: GÃ¶z dostu tema seÃ§enekleri
-- ðŸŽ¨ **Ã–zel Arka Planlar**: Renk seÃ§ici ile kiÅŸiselleÅŸtirme
-- ðŸ”‹ **Power Save Mode**: DÃ¼ÅŸÃ¼k performanslÄ± cihazlar iÃ§in optimizasyon
-- ðŸŽµ **Ses Kontrolleri**: MÃ¼zik ve efekt ayarlarÄ±
+### Kişiselleştirme
+- 🌘 **Dark/Light Mode**: Göz dostu tema seçenekleri
+- 🎨 **Özel Arka Planlar**: Renk seçici ile kişiselleştirme
+- 🔋 **Power Save Mode**: Düşük performanslı cihazlar için optimizasyon
+- 🎵 **Ses Kontrolleri**: Müzik ve efekt ayarları
 
-### Sosyal Ã–zellikler
-- ðŸ’¬ **TakÄ±m Sohbeti**: TakÄ±m iÃ§i stratejik iletiÅŸim
-- ðŸ˜€ **Emoji Reaksiyonlar**: HÄ±zlÄ± duygusal tepkiler
-- ðŸŽ **Ã–zel Efektler**: Slash komutlarÄ± ile eÄŸlenceli animasyonlar
-- ðŸ“¯ **Korna Sistemi**: TakÄ±m arkadaÅŸlarÄ±nÄ±zÄ± uyarÄ±n
+### Sosyal Özellikler
+- 💬 **Takım Sohbeti**: Takım içi stratejik iletişim
+- 😀 **Emoji Reaksiyonlar**: Hızlı duygusal tepkiler
+- 🎁 **Özel Efektler**: Slash komutları ile eğlenceli animasyonlar
+- 📢 **Korna Sistemi**: Takım arkadaşlarınızı uyarın
 
-### Teknik Ã–zellikler
-- ðŸš€ **GPU HÄ±zlandÄ±rma**: AkÄ±cÄ± animasyonlar
-- ðŸ“Š **Performans Ä°zleme**: Real-time optimizasyon
-- ðŸ”’ **GÃ¼venli BaÄŸlantÄ±**: Socket.IO ile ÅŸifreli iletiÅŸim
-- ðŸ’¾ **Otomatik KayÄ±t**: LocalStorage ile ayarlarÄ± hatÄ±rlama
+### Teknik Özellikler
+- 🚀 **GPU Hızlandırma**: Akıcı animasyonlar
+- 📊 **Performans İzleme**: Real-time optimizasyon
+- 🔒 **Güvenli Bağlantı**: Socket.IO ile şifreli iletişim
+- 💾 **Otomatik Kayıt**: LocalStorage ile ayarları hatırlama
 
 ---
 
-## ðŸš€ Kurulum
+## 🚀 Kurulum
 
 ### Gereksinimler
 
-- Node.js 18.x veya Ã¼zeri
-- npm veya yarn paket yÃ¶neticisi
-- Modern web tarayÄ±cÄ±sÄ± (Chrome, Firefox, Safari, Edge)
+- Node.js 18.x veya üzeri
+- npm veya yarn paket yöneticisi
+- Modern web tarayıcısı (Chrome, Firefox, Safari, Edge)
 
-### AdÄ±mlar
+### Adımlar
 
-1. **Projeyi klonlayÄ±n**
+1. **Projeyi klonlayın**
 ```bash
 git clone https://github.com/SherlockFP/Code0.git
 cd Code0
 ```
 
-2. **BaÄŸÄ±mlÄ±lÄ±klarÄ± yÃ¼kleyin**
+2. **Bağımlılıkları yükleyin**
 ```bash
 npm install
 ```
 
-3. **Sunucuyu baÅŸlatÄ±n**
+3. **Sunucuyu başlatın**
 ```bash
 node server.js
 ```
 
-4. **TarayÄ±cÄ±da aÃ§Ä±n**
+4. **Tarayıcıda açın**
 ```
 http://localhost:3000
 ```
@@ -108,171 +108,170 @@ PORT=8080 node server.js
 
 ---
 
-## ðŸŽ¯ KullanÄ±m
+## 🎯 Kullanım
 
-### 1. GiriÅŸ YapÄ±n
-- KullanÄ±cÄ± adÄ±nÄ±zÄ± girin (max 15 karakter)
-- "Oyuna BaÅŸla" butonuna tÄ±klayÄ±n
+### 1. Giriş Yapın
+- Kullanıcı adınızı girin (max 15 karakter)
+- "Oyuna Başla" butonuna tıklayın
 
-### 2. Oda OluÅŸturun veya KatÄ±lÄ±n
-- **Yeni Oda**: Oda adÄ±, kelime seti ve oyuncu sayÄ±sÄ± seÃ§in
-- **Mevcut Oda**: Aktif odalardan birine katÄ±lÄ±n
-- **Davet Kodu**: 6 haneli kod ile doÄŸrudan katÄ±lÄ±n
+### 2. Oda Oluşturun veya Katılın
+- **Yeni Oda**: Oda adı, kelime seti ve oyuncu sayısı seçin
+- **Mevcut Oda**: Aktif odalardan birine katılın
+- **Davet Kodu**: 6 haneli kod ile doğrudan katılın
 
-### 3. TakÄ±m SeÃ§in
-- ðŸ”´ **KÄ±rmÄ±zÄ± TakÄ±m** veya ðŸ”µ **Mavi TakÄ±m**
-- ðŸŽ© **CasusbaÅŸÄ±** veya ðŸ‘¤ **Operatif** rolÃ¼ seÃ§in
+### 3. Takım Seçin
+- 🔴 **Kırmızı Takım** veya 🔵 **Mavi Takım**
+- 🎩 **Casusbaşı** veya 👤 **Operatif** rolü seçin
 
-### 4. Oyuna BaÅŸlayÄ±n
-- En az 4 oyuncu (her takÄ±mda 1 casusbaÅŸÄ± + 1 operatif)
-- "OYUNU BAÅžLAT" butonuna tÄ±klayÄ±n
+### 4. Oyuna Başlayın
+- En az 4 oyuncu (her takımda 1 casusbaşı + 1 operatif)
+- "OYUNU BAŞLAT" butonuna tıklayın
 
 ---
 
-## ðŸŽ² OynanÄ±ÅŸ
+## 🎲 Oynanış
 
 ### Roller
 
-#### ðŸŽ© CasusbaÅŸÄ±
-- TÃ¼m kartlarÄ±n renklerini gÃ¶rebilir
-- TakÄ±mÄ±na **tek kelimelik ipucu** ve **sayÄ±** verir
-- Ã–rnek: "Hayvan 3" â†’ 3 hayvan kartÄ± aÃ§Ä±lmalÄ±
+#### 🎩 Casusbaşı
+- Tüm kartların renklerini görebilir
+- Takımına **tek kelimelik ipucu** ve **sayı** verir
+- Örnek: "Hayvan 3" → 3 hayvan kartı açılmalı
 
-#### ðŸ‘¤ Operatif
-- CasusbaÅŸÄ±nÄ±n ipucuna gÃ¶re **doÄŸru kartlarÄ±** aÃ§maya Ã§alÄ±ÅŸÄ±r
-- YanlÄ±ÅŸ aÃ§arsa sÄ±ra geÃ§er veya oyun biter
+#### 👤 Operatif
+- Casusbaşının ipucuna göre **doğru kartları** açmaya çalışır
+- Yanlış açarsa sıra geçer veya oyun biter
 
-### Kart TÃ¼rleri
+### Kart Türleri
 
-| Renk | AÃ§Ä±klama | SonuÃ§ |
+| Renk | Açıklama | Sonuç |
 |------|----------|-------|
-| ðŸ”´ KÄ±rmÄ±zÄ± | KÄ±rmÄ±zÄ± takÄ±mÄ±n kartÄ± | +1 puan |
-| ðŸ”µ Mavi | Mavi takÄ±mÄ±n kartÄ± | +1 puan |
-| ðŸŸ¡ NÃ¶tr | TarafsÄ±z kart | SÄ±ra geÃ§er |
-| âš« SuikastÃ§Ä± | Kaybetme kartÄ± | Oyun biter! |
+| 🔴 Kırmızı | Kırmızı takımın kartı | +1 puan |
+| 🔵 Mavi | Mavi takımın kartı | +1 puan |
+| 🟡 Nötr | Tarafsız kart | Sıra geçer |
+| ⚫ Suikastçı | Kaybetme kartı | Oyun biter! |
 
-### Power Cards (GÃ¼Ã§ KartlarÄ±)
+### Power Cards (Güç Kartları)
 
-25+ farklÄ± power card ile stratejinizi gÃ¼Ã§lendirin:
+25+ farklı power card ile stratejinizi güçlendirin:
 
-- **ðŸ” Double Clue**: AynÄ± turda 2 ipucu verin
-- **ðŸŽ¯ Reveal**: Rakip kartÄ±nÄ± aÃ§Ä±ÄŸa Ã§Ä±karÄ±n
-- **ðŸ”„ Swap**: 2 kartÄ±n yerini deÄŸiÅŸtirin
-- **ðŸ›¡ï¸ Shield**: KartÄ± koruyun
-- **â° Extra Time**: Ekstra hamle hakkÄ±
-- ve daha fazlasÄ±...
+- **🔍 Double Clue**: Aynı turda 2 ipucu verin
+- 🎯 **Reveal**: Rakip kartını açığa çıkarın
+- 🔄 **Swap**: 2 kartın yerini değiştirin
+- 🛡️ **Shield**: Kartı koruyun
+- ⏳ **Extra Time**: Ekstra hamle hakkı
+- ve daha fazlası...
 
-### Slash KomutlarÄ±
+### Slash Komutları
 
-Ã–zel efektler iÃ§in chat'e yazÄ±n:
+Özel efektler için chat'e yazın:
 
-- `/yagmur` - YaÄŸmur efekti
-- `/zeus` - YÄ±ldÄ±rÄ±m efekti
-- `/fire` - AteÅŸ efekti
+- `/yagmur` - Yağmur efekti
+- `/zeus` - Yıldırım efekti
+- `/fire` - Ateş efekti
 - `/snow` - Kar efekti
 - `/water` - Su efekti
 - `/quake` - Deprem efekti
 
-### Chat KomutlarÄ±
+### Chat Komutları
 
-- **Normal mesaj**: Herkese aÃ§Ä±k
-- `/p mesaj` - Sadece takÄ±mÄ±nÄ±za Ã¶zel mesaj
+- **Normal mesaj**: Herkese açık
+- `/p mesaj` - Sadece takımınıza özel mesaj
 
 ---
 
-## ðŸŽ¨ KiÅŸiselleÅŸtirme
+## 🎨 Kişiselleştirme
 
 ### Dark Mode
-- SaÄŸ Ã¼st kÃ¶ÅŸede â˜€ï¸/ðŸŒ™ butonuna tÄ±klayÄ±n
+- Sağ üst köşede ☀️/🌙 butonuna tıklayın
 - Otomatik olarak kaydedilir
 
 ### Arka Plan Rengi
-- ðŸŽ¨ Renk seÃ§ici ile istediÄŸiniz rengi seÃ§in
-- ðŸŒˆ VarsayÄ±lan gÃ¶kkuÅŸaÄŸÄ± arka plana dÃ¶nmek iÃ§in butona tÄ±klayÄ±n
+- 🎨 Renk seçici ile istediğiniz rengi seçin
+- 🌈 Varsayılan gökkuşağı arka plana dönmek için butona tıklayın
 
 ### Power Save Mode
-- ðŸ”‹ DÃ¼ÅŸÃ¼k performanslÄ± cihazlarda etkinleÅŸtirin
-- Animasyonlar ve efektler azaltÄ±lÄ±r
+- 🔋 Düşük performanslı cihazlarda etkinleştirin
+- Animasyonlar ve efektler azaltılır
 
 ---
 
-## ðŸ› ï¸ Teknolojiler
+## 🛠️ Teknolojiler
 
 ### Frontend
-- **HTML5** - Semantik yapÄ±
+- **HTML5** - Semantik yapı
 - **CSS3** - Modern stil ve animasyonlar
-- **Vanilla JavaScript** - ES6+ Ã¶zellikleri
-- **Socket.IO Client** - GerÃ§ek zamanlÄ± iletiÅŸim
+- **Vanilla JavaScript** - ES6+ özellikleri
+- **Socket.IO Client** - Gerçek zamanlı iletişim
 
 ### Backend
 - **Node.js** - Server runtime
 - **Express.js** - Web framework
-- **Socket.IO** - WebSocket kÃ¼tÃ¼phanesi
+- **Socket.IO** - WebSocket kütüphanesi
 
-### Ã–zellikler
+### Özellikler
 - **GPU Acceleration** - transform3d, will-change
-- **Passive Event Listeners** - Scroll performansÄ±
+- **Passive Event Listeners** - Scroll performansı
 - **CSS Containment** - Render optimizasyonu
-- **LocalStorage** - AyarlarÄ± kaydetme
+- **LocalStorage** - Ayarları kaydetme
 
 ---
 
-## ðŸ“± TarayÄ±cÄ± DesteÄŸi
+## 📱 Tarayıcı Desteği
 
-| TarayÄ±cÄ± | Versiyon |
+| Tarayıcı | Versiyon |
 |----------|----------|
-| Chrome | 90+ âœ… |
-| Firefox | 88+ âœ… |
-| Safari | 14+ âœ… |
-| Edge | 90+ âœ… |
-| Opera | 76+ âœ… |
+| Chrome | 90+ ✅ |
+| Firefox | 88+ ✅ |
+| Safari | 14+ ✅ |
+| Edge | 90+ ✅ |
+| Opera | 76+ ✅ |
 
 ---
 
-## ðŸ¤ KatkÄ±da Bulunma
+## 🤝 Katkıda Bulunma
 
-KatkÄ±larÄ±nÄ±zÄ± bekliyoruz! Ä°ÅŸte nasÄ±l katkÄ±da bulunabilirsiniz:
+Katkılarınızı bekliyoruz! İşte nasıl katkıda bulunabilirsiniz:
 
 1. **Fork** edin
-2. Feature branch oluÅŸturun (`git checkout -b feature/AmazingFeature`)
-3. DeÄŸiÅŸikliklerinizi commit edin (`git commit -m 'Add some AmazingFeature'`)
+2. Feature branch oluşturun (`git checkout -b feature/AmazingFeature`)
+3. Değişikliklerinizi commit edin (`git commit -m 'Add some AmazingFeature'`)
 4. Branch'inizi push edin (`git push origin feature/AmazingFeature`)
-5. **Pull Request** aÃ§Ä±n
+5. **Pull Request** açın
 
-### GeliÅŸtirme KurallarÄ±
-- Kod standartlarÄ±na uyun (ES6+)
-- Yorum satÄ±rlarÄ± ekleyin
-- DeÄŸiÅŸikliklerinizi test edin
-- Commit mesajlarÄ±nÄ± aÃ§Ä±klayÄ±cÄ± yazÄ±n
-
----
-
-## ðŸ“ Lisans
-
-Bu proje MIT lisansÄ± altÄ±nda lisanslanmÄ±ÅŸtÄ±r. Detaylar iÃ§in [LICENSE](LICENSE) dosyasÄ±na bakÄ±n.
+### Geliştirme Kuralları
+- Kod standartlarına uyun (ES6+)
+- Yorum satırları ekleyin
+- Değişikliklerinizi test edin
+- Commit mesajlarını açıklayıcı yazın
 
 ---
 
-## ðŸ“ž Ä°letiÅŸim
+## 📝 Lisans
+
+Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakın.
+
+---
+
+## 📞 İletişim
 
 - **Proje Linki**: [https://github.com/SherlockFP/Code0](https://github.com/SherlockFP/Code0)
 - **Issues**: [https://github.com/SherlockFP/Code0/issues](https://github.com/SherlockFP/Code0/issues)
 
 ---
 
-## ðŸ™ TeÅŸekkÃ¼rler
+## 🙏 Teşekkürler
 
-- [Socket.IO](https://socket.io/) - GerÃ§ek zamanlÄ± iletiÅŸim
+- [Socket.IO](https://socket.io/) - Gerçek zamanlı iletişim
 - [Node.js](https://nodejs.org/) - Server runtime
-- TÃ¼m katkÄ±da bulunanlara â¤ï¸
+- Tüm katkıda bulunanlara ❤️
 
 ---
 
 <div align="center">
 
-**â­ Projeyi beÄŸendiyseniz yÄ±ldÄ±z vermeyi unutmayÄ±n!**
+**⭐ Projeyi beğendiyseniz yıldız vermeyi unutmayın!**
 
-Made with â¤ï¸ by [SherlockFP](https://github.com/SherlockFP)
+Made with ❤️ by [SherlockFP](https://github.com/SherlockFP)
 
 </div>
-
