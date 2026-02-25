@@ -4737,20 +4737,21 @@ body.game-live .card:not(.revealed) {
 
 /* Dark mode card improvements */
 .dark-mode .card {
-    background: linear-gradient(to bottom, #d6bc9f 60%, #856142 60%);
-    border-color: #bc8f60;
-    color: #ffffff;
+    background: linear-gradient(to bottom, #4e342e 60%, #2e1b18 60%);
+    border-color: #3e2723;
+    color: #ffd54f;
+    /* Golden/yellowish text to stand out against dark wood */
     box-shadow:
-        0 4px 8px rgba(0, 0, 0, 0.3),
-        0 1px 3px rgba(0, 0, 0, 0.2);
+        0 4px 8px rgba(0, 0, 0, 0.5),
+        0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .dark-mode .card:hover:not(.revealed) {
-    background: linear-gradient(to bottom, #e5cfb5 60%, #9e754d 60%);
-    border-color: #d6bc9f;
+    background: linear-gradient(to bottom, #5d4037 60%, #3e2723 60%);
+    border-color: #4e342e;
     box-shadow:
-        0 8px 16px rgba(0, 0, 0, 0.4),
-        0 3px 6px rgba(0, 0, 0, 0.3);
+        0 8px 16px rgba(0, 0, 0, 0.6),
+        0 3px 6px rgba(0, 0, 0, 0.5);
 }
 
 .dark-mode .card.revealed.red {
