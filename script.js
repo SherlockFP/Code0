@@ -4055,6 +4055,12 @@ function toggleDarkMode() {
     if (btn) {
         btn.classList.toggle('dark-enabled', isDarkMode);
     }
+    
+    // Also toggle the lobby dark mode button if it exists
+    const lobbyBtn = document.getElementById('dark-mode-toggle-lobby');
+    if (lobbyBtn) {
+        lobbyBtn.classList.toggle('dark-enabled', isDarkMode);
+    }
 }
 
 // Toggle power save mode
