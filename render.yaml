@@ -1,0 +1,7 @@
+﻿services:
+  - type: web
+    name: agent0-codenames
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    plan: free
